@@ -1,0 +1,13 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# React
+BoneUP-Web/node_modules/
+BoneUP-Mobile/node_modules/
+dist/
+build/
+
+# VSCode
+.vscode/
