@@ -1,10 +1,21 @@
-import { useEffect, useState } from 'react';
-import api from './api';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-export default function App() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    api.get('/api/health').then(res => setData(res.data));
-  }, []);
-  return <pre>{JSON.stringify(data, null, 2)}</pre>;
-}
+
+import Home from "./pages/student/Home";
+import FishGuide from "./pages/student/FishGuide";
+import Tools from "./pages/student/Tools";
+
+const App = () => {
+	return (
+		<div>
+			<Routes>
+				<Route path="/" element={<Home/>} />
+				<Route path="/tools" element={<Tools/>} />
+				<Route path="/fish-guide" element={<FishGuide/>} />
+			</Routes>
+		</div>
+	);
+};
+
+export default App;
