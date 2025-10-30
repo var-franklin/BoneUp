@@ -5,6 +5,11 @@ const pool = require('../db');
 
 async function initializeAdmin() {
   try {
+    // Test database connection first
+    const connection = await pool.getConnection();
+    console.log('✓ Database connection successful');
+    connection.release();
+
     // Check if admin exists
     const [existing] = await pool.query(
       'SELECT id FROM users WHERE email = ?',
@@ -27,7 +32,10 @@ async function initializeAdmin() {
 
     console.log('✓ Admin account created (admin@boneup.com / admin123)');
   } catch (error) {
-    console.error('Error initializing admin:', error.message);
+    console.error('❌ Error initializing admin:');
+    console.error('  Message:', error.message);
+    console.error('  Code:', error.code);
+    console.error('  Full error:', error);
   }
 }
 
