@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 import Home from "./pages/Home";
 import FishGuide from "./pages/FishGuide";
-import Tools from "./pages/Tools";
+import HowItWorks from "./pages/HowItWorks";
 import SignIn from "./pages/auth/SignIn";
 import GetStarted from "./pages/auth/GetStarted";
 import StudentDashboard from "./pages/dashboards/StudentDashboard";
@@ -43,7 +43,7 @@ const App = () => {
 			<Toaster position="top-right" />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/tools" element={<Tools />} />
+				<Route path="/how-it-works" element={<HowItWorks />} />
 				<Route path="/fish-guide" element={<FishGuide />} />
 				<Route path="/signin" element={<SignIn />} />
 				<Route path="/get-started" element={<GetStarted />} />

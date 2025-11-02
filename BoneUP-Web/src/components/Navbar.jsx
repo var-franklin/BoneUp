@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useContext(AppContext);
   const [isSticky, setIsSticky] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const isActive = (path) => {
     return location.pathname === path;
@@ -19,28 +23,35 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMyAccountClick = () => {
+    if (user) {
+      if (user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (user.role === 'instructor') {
+        navigate('/instructor/dashboard');
+      } else {
+        navigate('/student/dashboard');
+      }
+    }
+  };
+
   return (
     <>
       <nav 
         className={`
           fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
           ${isSticky 
-            ? 'bg-gray-50/90 backdrop-blur-md shadow-lg' 
-            : 'bg-white shadow-sm'
+            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+            : 'bg-white'
           }
         `}
       >
-        {/* Subtle line below navbar - only show when not scrolled */}
-        {!isSticky && (
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-        )}
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo Section */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-[#04510e] rounded-lg flex items-center justify-center">
                   <svg 
                     className="w-5 h-5 text-white" 
                     fill="none" 
@@ -55,76 +66,107 @@ const Navbar = () => {
                     />
                   </svg>
                 </div>
-                <span className="text-xl font-semibold text-gray-900">
+                <span className="text-xl font-semibold text-[#04510e]">
                   BoneUp!
                 </span>
               </Link>
             </div>
 
-            {/* Navigation Menu */}
-            <div className="hidden md:flex items-center space-x-2">
+            {/* Navigation Menu - Desktop */}
+            <div className="hidden md:flex items-center space-x-4">
               <Link
                 to="/"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 text-base font-medium transition-colors duration-200 relative ${
                   isActive('/') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? 'text-[#04510e]' 
+                    : 'text-black hover:text-[#04510e] group'
                 }`}
               >
                 Home
+                {isActive('/') ? (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#04510e]"></span>
+                ) : (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#04510e] transition-all duration-300 group-hover:w-full"></span>
+                )}
               </Link>
               <Link
-                to="/tools"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive('/tools') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                to="/how-it-works"
+                className={`px-4 py-2 text-base font-medium transition-colors duration-200 relative ${
+                  isActive('/how-it-works') 
+                    ? 'text-[#04510e]' 
+                    : 'text-black hover:text-[#04510e] group'
                 }`}
               >
-                Tools
+                How It Works
+                {isActive('/how-it-works') ? (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#04510e]"></span>
+                ) : (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#04510e] transition-all duration-300 group-hover:w-full"></span>
+                )}
               </Link>
               <Link
                 to="/fish-guide"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 text-base font-medium transition-colors duration-200 relative ${
                   isActive('/fish-guide') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? 'text-[#04510e]' 
+                    : 'text-black hover:text-[#04510e] group'
                 }`}
               >
                 Fish Guide
+                {isActive('/fish-guide') ? (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#04510e]"></span>
+                ) : (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#04510e] transition-all duration-300 group-hover:w-full"></span>
+                )}
               </Link>
               
               {/* Divider */}
-              <div className="h-6 w-px bg-gray-300 mx-2"></div>
+              <div className="h-6 w-px bg-[#04510e]"></div>
               
-              {/* Auth Buttons */}
-              <Link
-                to="/signin"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive('/signin') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/get-started"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive('/get-started') 
-                    ? 'text-white bg-blue-600' 
-                    : 'text-white bg-blue-500 hover:bg-blue-600'
-                }`}
-              >
-                Get Started
-              </Link>
+              {/* Conditional Auth Buttons */}
+              {user ? (
+                // Authenticated User
+                <button
+                  onClick={handleMyAccountClick}
+                  className="px-4 py-2 text-base font-medium text-black hover:text-[#04510e] transition-colors duration-200 relative group"
+                >
+                  My Account
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#04510e] transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              ) : (
+                // Not Authenticated
+                <>
+                  <Link
+                    to="/signin"
+                    className={`px-4 py-2 text-base font-medium transition-colors duration-200 relative ${
+                      isActive('/signin') 
+                        ? 'text-[#04510e]' 
+                        : 'text-black hover:text-[#04510e] group'
+                    }`}
+                  >
+                    Sign In
+                    {isActive('/signin') ? (
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#04510e]"></span>
+                    ) : (
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#04510e] transition-all duration-300 group-hover:w-full"></span>
+                    )}
+                  </Link>
+                  <Link
+                    to="/get-started"
+                    className="px-4 py-2 rounded-md text-base font-medium text-white bg-[#04510e] hover:bg-green-800 transition-colors duration-200 shadow-md hover:shadow-lg"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
                 type="button"
-                className="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-green-600 hover:text-[#04510e] hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 transition-colors duration-200"
               >
                 <svg
                   className="h-6 w-6"
@@ -133,21 +175,108 @@ const Navbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
                 </svg>
               </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div className="px-4 pt-2 pb-3 space-y-1">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive('/')
+                    ? 'text-[#04510e] bg-green-50'
+                    : 'text-black hover:text-[#04510e] hover:bg-green-50'
+                } transition-colors duration-200`}
+              >
+                Home
+              </Link>
+              <Link
+                to="/fish-guide"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive('/fish-guide')
+                    ? 'text-[#04510e] bg-green-50'
+                    : 'text-black hover:text-[#04510e] hover:bg-green-50'
+                } transition-colors duration-200`}
+              >
+                Fish Guide
+              </Link>
+              <Link
+                to="/how-it-works"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive('/how-it-works')
+                    ? 'text-[#04510e] bg-green-50'
+                    : 'text-black hover:text-[#04510e] hover:bg-green-50'
+                } transition-colors duration-200`}
+              >
+                How It Works
+              </Link>
+              
+              {/* Divider */}
+              <div className="border-t border-gray-200 my-2"></div>
+              
+              {/* Conditional Auth Buttons - Mobile */}
+              {user ? (
+                <button
+                  onClick={() => {
+                    handleMyAccountClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-black hover:text-[#04510e] hover:bg-green-50 transition-colors duration-200"
+                >
+                  My Account
+                </button>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      isActive('/signin')
+                        ? 'text-[#04510e] bg-green-50'
+                        : 'text-black hover:text-[#04510e] hover:bg-green-50'
+                    } transition-colors duration-200`}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/get-started"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white bg-[#04510e] hover:bg-green-800 transition-colors duration-200"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Spacer to prevent content from hiding behind fixed navbar */}
-      <div className="h-16"></div>
+      <div className="h-20"></div>
     </>
   );
 };
