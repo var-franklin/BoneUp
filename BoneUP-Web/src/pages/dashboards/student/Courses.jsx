@@ -86,7 +86,7 @@ const Courses = () => {
 
 	const getStatusBadge = (status) => {
 		const styles = {
-			"in-progress": "bg-blue-50 text-blue-700 border-blue-200",
+			"in-progress": "bg-green-50 text-green-700 border-green-200",
 			"completed": "bg-green-50 text-green-700 border-green-200",
 			"not-started": "bg-gray-50 text-gray-600 border-gray-200"
 		};
@@ -127,8 +127,8 @@ const Courses = () => {
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
 				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-							<BookOpen className="w-5 h-5 text-blue-600" />
+						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
+							<BookOpen className="w-5 h-5 text-green-700" />
 						</div>
 						<div>
 							<p className="text-2xl font-semibold text-gray-900">
@@ -184,7 +184,7 @@ const Courses = () => {
 						onClick={() => setFilter("all")}
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "all"
-								? "bg-blue-600 text-white shadow-sm"
+								? "bg-[#04510e] text-white shadow-sm"
 								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
 						}`}
 					>
@@ -194,7 +194,7 @@ const Courses = () => {
 						onClick={() => setFilter("in-progress")}
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "in-progress"
-								? "bg-blue-600 text-white shadow-sm"
+								? "bg-[#04510e] text-white shadow-sm"
 								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
 						}`}
 					>
@@ -204,7 +204,7 @@ const Courses = () => {
 						onClick={() => setFilter("completed")}
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "completed"
-								? "bg-blue-600 text-white shadow-sm"
+								? "bg-[#04510e] text-white shadow-sm"
 								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
 						}`}
 					>
@@ -214,7 +214,7 @@ const Courses = () => {
 						onClick={() => setFilter("not-started")}
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "not-started"
-								? "bg-blue-600 text-white shadow-sm"
+								? "bg-[#04510e] text-white shadow-sm"
 								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
 						}`}
 					>
@@ -235,8 +235,8 @@ const Courses = () => {
 							{/* Course Header */}
 							<div className="p-6 border-b border-gray-100">
 								<div className="flex items-start justify-between mb-4">
-									<div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-										<Icon className="w-6 h-6 text-blue-600" />
+									<div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center group-hover:bg-green-100 transition-colors">
+										<Icon className="w-6 h-6 text-green-700" />
 									</div>
 									{getLevelBadge(course.level)}
 								</div>
@@ -257,7 +257,7 @@ const Courses = () => {
 									</div>
 									<div className="w-full bg-gray-100 rounded-full h-2">
 										<div
-											className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+											className="bg-[#04510e] h-2 rounded-full transition-all duration-300"
 											style={{ width: `${course.progress}%` }}
 										></div>
 									</div>
@@ -282,7 +282,7 @@ const Courses = () => {
 									</div>
 								</div>
 
-								<button className="w-full px-4 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 group">
+								<button className="w-full px-4 py-2.5 bg-[#04510e] text-white text-sm font-medium rounded-md hover:bg-[#033a0a] transition-colors flex items-center justify-center gap-2 group">
 									{course.status === "completed" ? (
 										<>
 											<CheckCircle className="w-4 h-4" />

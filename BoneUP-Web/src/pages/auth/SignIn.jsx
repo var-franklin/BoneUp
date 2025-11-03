@@ -1,5 +1,3 @@
-//file path: BoneUP-Web/src/pages/auth/SignIn.jsx
-
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
@@ -58,33 +56,30 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-12">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-400 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
-      </div>
-
-      <div className="max-w-md w-full relative">
+    <div 
+      className="min-h-screen flex items-center justify-center px-4 py-12 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/img/cvsu-naic-bg.png')" }}
+    >
+      <div className="max-w-md w-full relative z-10">
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-10">
+        <div className="bg-white rounded-2xl shadow-2xl border border-green-100 p-8 sm:p-10">
           {/* Logo and Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg transform transition-transform hover:scale-105">
-                <Fish className="w-10 h-10 text-white" />
+              <div className="w-20 h-20 bg-gradient-to-br from-[#04510e] to-green-700 rounded-2xl flex items-center justify-center shadow-lg">
+                <Fish className="w-12 h-12 text-white" />
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">
-              Welcome back
+            <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+              Welcome to <span className="text-[#04510e]">CvSUHimay</span>
             </h2>
-            <p className="text-sm text-gray-600">
-              Sign in to continue your learning journey
+            <p className="text-sm text-slate-600">
+              Sign in to continue your fish deboning journey
             </p>
           </div>
 
           {/* Form */}
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <div className="space-y-5">
             {errors.submit && (
               <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm flex items-start">
                 <svg className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -96,12 +91,12 @@ const SignIn = () => {
 
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                 Email address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="email"
@@ -113,8 +108,8 @@ const SignIn = () => {
                     setErrors({ ...errors, email: "" });
                   }}
                   className={`block w-full pl-10 pr-3 py-3 border ${
-                    errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
-                  } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
+                    errors.email ? "border-red-300 focus:ring-red-500 focus:border-red-500" : "border-slate-300 focus:ring-[#04510e] focus:border-[#04510e]"
+                  } rounded-xl focus:outline-none focus:ring-2 transition-all`}
                   placeholder="you@example.com"
                 />
               </div>
@@ -130,12 +125,12 @@ const SignIn = () => {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
                 Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="password"
@@ -146,20 +141,25 @@ const SignIn = () => {
                     setPassword(e.target.value);
                     setErrors({ ...errors, password: "" });
                   }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSubmit(e);
+                    }
+                  }}
                   className={`block w-full pl-10 pr-10 py-3 border ${
-                    errors.password ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
-                  } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
+                    errors.password ? "border-red-300 focus:ring-red-500 focus:border-red-500" : "border-slate-300 focus:ring-[#04510e] focus:border-[#04510e]"
+                  } rounded-xl focus:outline-none focus:ring-2 transition-all`}
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-50 rounded-r-xl transition-colors"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-slate-50 rounded-r-xl transition-colors"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <EyeOff className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <Eye className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   )}
                 </button>
               </div>
@@ -177,7 +177,7 @@ const SignIn = () => {
             <div className="flex items-center justify-end">
               <Link
                 to="/forgot-password"
-                className="text-sm font-medium text-blue-600 hover:text-blue-500 transition-colors"
+                className="text-sm font-medium text-[#04510e] hover:text-green-700 transition-colors"
               >
                 Forgot password?
               </Link>
@@ -185,9 +185,10 @@ const SignIn = () => {
 
             {/* Submit Button */}
             <button
-              type="submit"
+              type="button"
+              onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-green-700 hover:bg-[#04510e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#04510e] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (
                 <>
@@ -205,10 +206,10 @@ const SignIn = () => {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-slate-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500">Or continue with</span>
+                <span className="px-4 bg-white text-slate-500">Or continue with</span>
               </div>
             </div>
 
@@ -219,7 +220,7 @@ const SignIn = () => {
                 // TODO: Implement Google OAuth
                 console.log("Google Sign In clicked");
               }}
-              className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full flex justify-center items-center py-3 px-4 border border-slate-300 rounded-xl shadow-sm text-base font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#04510e] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -229,26 +230,21 @@ const SignIn = () => {
               </svg>
               Sign in with Google
             </button>
-          </form>
+          </div>
 
           {/* Divider */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600">
+          <div className="mt-8 pt-6 border-t border-slate-200">
+            <p className="text-center text-sm text-slate-600">
               Don't have an account?{" "}
               <Link
                 to="/get-started"
-                className="font-semibold text-blue-600 hover:text-blue-500 transition-colors"
+                className="font-semibold text-[#04510e] hover:text-green-700 transition-colors"
               >
                 Create account
               </Link>
             </p>
           </div>
         </div>
-
-        {/* Bottom tagline */}
-        <p className="mt-6 text-center text-sm text-gray-500">
-          Master the art of fish deboning with BoneUP
-        </p>
       </div>
     </div>
   );

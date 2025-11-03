@@ -80,8 +80,8 @@ const Simulations = () => {
 	};
 
 	const getScoreColor = (score) => {
-		if (score >= 90) return "text-green-600";
-		if (score >= 75) return "text-blue-600";
+		if (score >= 90) return "text-[#04510e]";
+		if (score >= 75) return "text-[#2e7d32]";
 		if (score >= 60) return "text-amber-600";
 		return "text-red-600";
 	};
@@ -98,8 +98,8 @@ const Simulations = () => {
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
 				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-							<Gamepad2 className="w-5 h-5 text-blue-600" />
+						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
+							<Gamepad2 className="w-5 h-5 text-green-700" />
 						</div>
 						<div>
 							<p className="text-2xl font-semibold text-gray-900">
@@ -151,23 +151,23 @@ const Simulations = () => {
 			</div>
 
 			{/* Feature Banner */}
-			<div className="bg-blue-600 rounded-lg p-6 mb-8 text-white border border-blue-700 shadow-sm">
+			<div className="bg-[#04510e] rounded-lg p-6 mb-8 text-white shadow-sm">
 				<div className="flex items-center justify-between">
 					<div>
 						<div className="flex items-center gap-2 mb-2">
 							<Zap className="w-6 h-6" />
 							<h2 className="text-2xl font-semibold">Try Our Latest Simulation!</h2>
 						</div>
-						<p className="text-blue-100 mb-4">
+						<p className="text-green-100 mb-4">
 							New interactive tilapia deboning simulation with real-time feedback
 						</p>
-						<button className="px-6 py-2.5 bg-white text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors flex items-center gap-2">
+						<button className="px-6 py-2.5 bg-white text-[#04510e] font-medium rounded-md hover:bg-green-50 transition-colors flex items-center gap-2">
 							<Play className="w-4 h-4" />
 							Launch Now
 						</button>
 					</div>
 					<div className="hidden md:block">
-						<Target className="w-24 h-24 text-blue-500 opacity-50" />
+						<Target className="w-24 h-24 text-white opacity-20" />
 					</div>
 				</div>
 			</div>
@@ -187,9 +187,9 @@ const Simulations = () => {
 							<div className="p-6 border-b border-gray-100">
 								<div className="flex items-start justify-between mb-4">
 									<div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
-										sim.available ? "bg-blue-50 group-hover:bg-blue-100" : "bg-gray-50"
+										sim.available ? "bg-green-50 group-hover:bg-green-100" : "bg-gray-50"
 									}`}>
-										<Icon className={`w-6 h-6 ${sim.available ? "text-blue-600" : "text-gray-400"}`} />
+										<Icon className={`w-6 h-6 ${sim.available ? "text-green-700" : "text-gray-400"}`} />
 									</div>
 									{!sim.available && (
 										<div className="flex items-center gap-1 bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md text-xs font-medium border border-gray-200">
@@ -240,7 +240,7 @@ const Simulations = () => {
 								<button
 									className={`w-full px-4 py-2.5 text-sm font-medium rounded-md transition-colors flex items-center justify-center gap-2 ${
 										sim.available
-											? "bg-blue-600 text-white hover:bg-blue-700"
+											? "bg-[#04510e] text-white hover:bg-[#033a0a]"
 											: "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
 									}`}
 									disabled={!sim.available}
@@ -264,28 +264,28 @@ const Simulations = () => {
 			</div>
 
 			{/* Tips Section */}
-			<div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+			<div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
 				<div className="flex items-start gap-3">
-					<div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-						<Zap className="w-5 h-5 text-blue-600" />
+					<div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+						<Zap className="w-5 h-5 text-[#04510e]" />
 					</div>
 					<div>
 						<h3 className="text-lg font-semibold text-gray-900 mb-3">Simulation Tips</h3>
 						<ul className="space-y-2 text-sm text-gray-700">
 							<li className="flex items-start gap-2">
-								<span className="text-blue-600 mt-0.5">•</span>
+								<span className="text-[#04510e] mt-0.5">•</span>
 								<span>Take your time and follow the highlighted guides for best results</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<span className="text-blue-600 mt-0.5">•</span>
+								<span className="text-[#04510e] mt-0.5">•</span>
 								<span>Use the pause button to review your technique at any time</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<span className="text-blue-600 mt-0.5">•</span>
+								<span className="text-[#04510e] mt-0.5">•</span>
 								<span>Complete beginner simulations to unlock advanced challenges</span>
 							</li>
 							<li className="flex items-start gap-2">
-								<span className="text-blue-600 mt-0.5">•</span>
+								<span className="text-[#04510e] mt-0.5">•</span>
 								<span>Aim for 90% or higher to earn achievement badges</span>
 							</li>
 						</ul>

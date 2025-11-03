@@ -67,7 +67,7 @@ const Navbar = () => {
                   </svg>
                 </div>
                 <span className="text-xl font-semibold text-[#04510e]">
-                  BoneUp!
+                  CvSUHimay
                 </span>
               </Link>
             </div>

@@ -33,7 +33,7 @@ const FishGuide = () => {
       technique: "Traditional Filipino deboning method",
       tips: "Requires patience and precision for Y-bone removal",
       popular: true,
-      description: "The primary focus of BoneUp! training. Bangus deboning is a skilled craft requiring mastery of complex bone structures, particularly the challenging Y-bones unique to milkfish.",
+      description: "The primary focus of CvSUHimay training. Bangus deboning is a skilled craft requiring mastery of complex bone structures, particularly the challenging Y-bones unique to milkfish.",
       fsmStates: [
         "Initial State - Fish Preparation",
         "Split Dorsal Side",
@@ -235,17 +235,17 @@ const FishGuide = () => {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br bg-white">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Header Section */}
-      <div className="border-b border-white/20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+      {/* Hero Section - Updated to match HowItWorks style */}
+      <div className="bg-gradient-to-br from-[#04510e] to-green-800 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold text-slate-900 mb-3 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
               Fish Deboning Guide
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-xl text-green-50 leading-relaxed">
               FSM-based interactive simulations for Philippine fisheries education. Master the art of fish deboning through structured, state-driven learning.
             </p>
           </div>
@@ -354,7 +354,7 @@ const FishGuide = () => {
         <div className="bg-white rounded-lg border border-slate-200 p-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Complete Learning System</h2>
-            <p className="text-slate-600">Access the full BoneUp! platform features through the Student Dashboard</p>
+            <p className="text-slate-600">Access the full CvSUHimay platform features through the Student Dashboard</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

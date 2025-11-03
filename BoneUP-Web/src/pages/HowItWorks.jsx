@@ -113,7 +113,7 @@ const HowItWorks = () => {
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-              How BoneUp! Works
+              How CvSUHimay Works
             </h1>
             <p className="text-xl text-green-50 leading-relaxed mb-8">
               Discover the FSM-powered technology behind our interactive fish deboning training platform
@@ -141,7 +141,7 @@ const HowItWorks = () => {
               Finite State Machine (FSM) Algorithm
             </h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              BoneUp! is built on a <span className="font-semibold text-slate-900">Finite State Machine (FSM)</span> algorithm - a mathematical model that represents the deboning process as a sequence of discrete states and transitions.
+              CvSUHimay is built on a <span className="font-semibold text-slate-900">Finite State Machine (FSM)</span> algorithm - a mathematical model that represents the deboning process as a sequence of discrete states and transitions.
             </p>
             <p className="text-slate-600 leading-relaxed mb-4">
               Unlike traditional rule-based systems that become complex and difficult to maintain, our FSM approach provides:
@@ -163,7 +163,7 @@ const HowItWorks = () => {
           </div>
           
           <div className="bg-slate-50 rounded-xl p-8 border-2 border-slate-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">FSM Components in BoneUp!</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-4">FSM Components in CvSUHimay</h3>
             <div className="space-y-4">
               <div className="bg-white p-4 rounded-lg border border-slate-200">
                 <div className="font-semibold text-[#04510e] mb-1">States (Q)</div>
@@ -342,7 +342,7 @@ const HowItWorks = () => {
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-semibold text-slate-900">Criteria</th>
                     <th className="px-6 py-3 text-left text-sm font-semibold text-rose-700">Traditional Rule-Based</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-emerald-700">FSM (BoneUp!)</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-emerald-700">FSM (CvSUHimay)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
@@ -382,7 +382,7 @@ const HowItWorks = () => {
           <p className="text-xl text-green-50 mb-8 leading-relaxed">
             {isAuthenticated 
               ? 'Access your personalized simulations and start mastering fish deboning today.'
-              : 'Join BoneUp! and start your journey to mastering fish deboning with intelligent, structured training.'}
+              : 'Join CvSUHimay and start your journey to mastering fish deboning with intelligent, structured training.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button

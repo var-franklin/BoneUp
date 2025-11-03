@@ -1,5 +1,3 @@
-//file path: BoneUP-Web/src/pages/auth/GetStarted.jsx
-
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
@@ -111,27 +109,24 @@ const GetStarted = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-12">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-400 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
-      </div>
-
-      <div className="max-w-md w-full relative">
+    <div 
+      className="min-h-screen flex items-center justify-center px-4 py-12 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/img/cvsu-naic-bg.png')" }}
+    >
+      <div className="max-w-md w-full relative z-10">
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-10">
+        <div className="bg-white rounded-2xl shadow-2xl border border-green-100 p-8 sm:p-10">
           {/* Logo and Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg transform transition-transform hover:scale-105">
-                <Fish className="w-10 h-10 text-white" />
+              <div className="w-20 h-20 bg-gradient-to-br from-[#04510e] to-green-700 rounded-2xl flex items-center justify-center shadow-lg">
+                <Fish className="w-12 h-12 text-white" />
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">
-              Create your account
+            <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+              Join <span className="text-[#04510e]">CvSUHimay</span>
             </h2>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-slate-600">
               Start your fish deboning journey today
             </p>
           </div>
@@ -149,12 +144,12 @@ const GetStarted = () => {
 
             {/* Full Name */}
             <div>
-              <label htmlFor="full_name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="full_name" className="block text-sm font-medium text-slate-700 mb-2">
                 Full Name
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
+                  <User className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="full_name"
@@ -164,7 +159,7 @@ const GetStarted = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur("full_name")}
                   className={`block w-full pl-10 pr-3 py-3 border ${
-                    errors.full_name ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+                    errors.full_name ? "border-red-300 focus:ring-red-500" : "border-slate-300 focus:ring-[#04510e]"
                   } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
                   placeholder="John Doe"
                 />
@@ -181,12 +176,12 @@ const GetStarted = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                 Email address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="email"
@@ -196,7 +191,7 @@ const GetStarted = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur("email")}
                   className={`block w-full pl-10 pr-3 py-3 border ${
-                    errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+                    errors.email ? "border-red-300 focus:ring-red-500" : "border-slate-300 focus:ring-[#04510e]"
                   } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
                   placeholder="you@example.com"
                 />
@@ -213,7 +208,7 @@ const GetStarted = () => {
 
             {/* Role */}
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="role" className="block text-sm font-medium text-slate-700 mb-2">
                 I am a
               </label>
               <select
@@ -221,7 +216,7 @@ const GetStarted = () => {
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
-                className="block w-full px-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                className="block w-full px-3 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-all bg-white"
               >
                 <option value="student">Student</option>
                 <option value="instructor">Instructor</option>
@@ -230,12 +225,12 @@ const GetStarted = () => {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
                 Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="password"
@@ -245,19 +240,19 @@ const GetStarted = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur("password")}
                   className={`block w-full pl-10 pr-10 py-3 border ${
-                    errors.password ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+                    errors.password ? "border-red-300 focus:ring-red-500" : "border-slate-300 focus:ring-[#04510e]"
                   } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-50 rounded-r-xl transition-colors"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-slate-50 rounded-r-xl transition-colors"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <EyeOff className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <Eye className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   )}
                 </button>
               </div>
@@ -272,9 +267,9 @@ const GetStarted = () => {
 
               {/* Password Strength Indicator */}
               {formData.password && (
-                <div className="mt-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                <div className="mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-gray-700">Password strength</span>
+                    <span className="text-xs font-medium text-slate-700">Password strength</span>
                     <span className={`text-xs font-semibold px-2 py-1 rounded-md ${
                       passwordStrength.strength === 1 ? "text-red-700 bg-red-100" :
                       passwordStrength.strength === 2 ? "text-yellow-700 bg-yellow-100" :
@@ -291,7 +286,7 @@ const GetStarted = () => {
                         className={`h-2 flex-1 rounded-full transition-all ${
                           level <= passwordStrength.strength
                             ? passwordStrength.color
-                            : "bg-gray-200"
+                            : "bg-slate-200"
                         }`}
                       />
                     ))}
@@ -310,11 +305,11 @@ const GetStarted = () => {
                             <Check className="h-3 w-3 text-green-600" />
                           </div>
                         ) : (
-                          <div className="flex-shrink-0 w-4 h-4 rounded-full bg-gray-200 flex items-center justify-center">
-                            <X className="h-3 w-3 text-gray-400" />
+                          <div className="flex-shrink-0 w-4 h-4 rounded-full bg-slate-200 flex items-center justify-center">
+                            <X className="h-3 w-3 text-slate-400" />
                           </div>
                         )}
-                        <span className={passwordStrength.checks?.[key] ? "text-gray-700 font-medium" : "text-gray-500"}>
+                        <span className={passwordStrength.checks?.[key] ? "text-slate-700 font-medium" : "text-slate-500"}>
                           {label}
                         </span>
                       </div>
@@ -326,12 +321,12 @@ const GetStarted = () => {
 
             {/* Confirm Password */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 mb-2">
                 Confirm Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-slate-400" />
                 </div>
                 <input
                   id="confirmPassword"
@@ -341,19 +336,19 @@ const GetStarted = () => {
                   onChange={handleChange}
                   onBlur={() => handleBlur("confirmPassword")}
                   className={`block w-full pl-10 pr-10 py-3 border ${
-                    errors.confirmPassword ? "border-red-300 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+                    errors.confirmPassword ? "border-red-300 focus:ring-red-500" : "border-slate-300 focus:ring-[#04510e]"
                   } rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-50 rounded-r-xl transition-colors"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-slate-50 rounded-r-xl transition-colors"
                 >
                   {showConfirmPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <EyeOff className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    <Eye className="h-5 w-5 text-slate-400 hover:text-slate-600 transition-colors" />
                   )}
                 </button>
               </div>
@@ -371,7 +366,7 @@ const GetStarted = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-green-700 hover:bg-[#04510e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#04510e] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (
                 <>
@@ -389,10 +384,10 @@ const GetStarted = () => {
             {/* Divider */}
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-slate-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500">Or continue with</span>
+                <span className="px-4 bg-white text-slate-500">Or continue with</span>
               </div>
             </div>
 
@@ -403,7 +398,7 @@ const GetStarted = () => {
                 // TODO: Implement Google OAuth
                 console.log("Google Sign Up clicked");
               }}
-              className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full flex justify-center items-center py-3 px-4 border border-slate-300 rounded-xl shadow-sm text-base font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#04510e] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -416,23 +411,18 @@ const GetStarted = () => {
           </form>
 
           {/* Divider */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600">
+          <div className="mt-8 pt-6 border-t border-slate-200">
+            <p className="text-center text-sm text-slate-600">
               Already have an account?{" "}
               <Link
                 to="/signin"
-                className="font-semibold text-blue-600 hover:text-blue-500 transition-colors"
+                className="font-semibold text-[#04510e] hover:text-green-700 transition-colors"
               >
                 Sign in
               </Link>
             </p>
           </div>
         </div>
-
-        {/* Bottom tagline */}
-        <p className="mt-6 text-center text-sm text-gray-500">
-          Master the art of fish deboning with BoneUP
-        </p>
       </div>
     </div>
   );

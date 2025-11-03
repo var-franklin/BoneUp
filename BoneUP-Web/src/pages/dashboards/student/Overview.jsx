@@ -1,4 +1,4 @@
-// file path: BoneUP-Web/src/pages/dashboards/admin/Overview.jsx
+// file path: BoneUP-Web/src/pages/dashboards/student/Overview.jsx
 
 import { useState } from "react";
 import { 
@@ -48,13 +48,6 @@ const Overview = () => {
     { name: "Knife Skills & Safety", instructor: "Prof. Davis", enrolled: 35, completion: 85, status: "active" }
   ];
 
-  const systemHealth = [
-    { metric: "Server Uptime", value: "99.9%", status: "excellent" },
-    { metric: "Active Sessions", value: "42", status: "good" },
-    { metric: "Storage Used", value: "68%", status: "good" },
-    { metric: "Pending Reviews", value: "3", status: "attention" }
-  ];
-
   const pendingActions = [
     { id: 1, action: "Review new instructor application", user: "Dr. Mark Anderson", priority: "high" },
     { id: 2, action: "Approve course content update", course: "Fish Species Identification", priority: "medium" },
@@ -65,8 +58,8 @@ const Overview = () => {
     <div className="p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="text-gray-500 mt-1">Platform overview and system management</p>
+        <h1 className="text-3xl font-bold text-gray-900">Student Dashboard</h1>
+        <p className="text-gray-500 mt-1">Platform overview and learning progress</p>
       </div>
 
       {/* Main Stats */}
@@ -78,8 +71,8 @@ const Overview = () => {
               <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
               <p className="text-xs text-gray-500 mt-1">{stats.totalStudents} students, {stats.totalInstructors} instructors</p>
             </div>
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Users className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <Users className="w-6 h-6 text-green-700" />
             </div>
           </div>
         </div>
@@ -92,7 +85,7 @@ const Overview = () => {
               <p className="text-xs text-gray-500 mt-1">{stats.activeCourses} active courses</p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-green-600" />
+              <BookOpen className="w-6 h-6 text-green-700" />
             </div>
           </div>
         </div>
@@ -113,12 +106,12 @@ const Overview = () => {
           </div>
         </div>
 
-        <div className="bg-blue-600 rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow text-white">
+        <div className="bg-[#04510e] rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow text-white">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-blue-100">Avg Engagement</p>
+              <p className="text-sm font-medium text-green-100">Avg Engagement</p>
               <p className="text-3xl font-bold mt-1">{stats.avgEngagement}%</p>
-              <p className="text-xs text-blue-100 mt-1">{stats.totalLessons} total lessons</p>
+              <p className="text-xs text-green-100 mt-1">{stats.totalLessons} total lessons</p>
             </div>
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
               <Award className="w-6 h-6 text-white" />
@@ -136,7 +129,7 @@ const Overview = () => {
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-semibold text-gray-900">Top Performing Courses</h2>
-                <button className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">
+                <button className="text-sm text-[#04510e] hover:text-[#033a0a] font-medium flex items-center gap-1">
                   View All
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -166,7 +159,7 @@ const Overview = () => {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-[#04510e] h-2 rounded-full transition-all duration-300"
                       style={{ width: `${course.completion}%` }}
                     ></div>
                   </div>
@@ -185,14 +178,14 @@ const Overview = () => {
                 <div key={activity.id} className="p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex gap-3">
                     <div className={`w-2 h-2 rounded-full mt-2 ${
-                      activity.type === 'user' ? 'bg-blue-500' :
+                      activity.type === 'user' ? 'bg-[#04510e]' :
                       activity.type === 'course' ? 'bg-green-500' :
                       activity.type === 'completion' ? 'bg-purple-500' :
                       activity.type === 'update' ? 'bg-amber-500' : 'bg-gray-500'
                     }`}></div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-900">
-                        <span className="text-blue-600">{activity.user}</span> {activity.action}
+                        <span className="text-[#04510e]">{activity.user}</span> {activity.action}
                       </p>
                       <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
                     </div>
@@ -205,31 +198,6 @@ const Overview = () => {
 
         {/* Right Column - 1/3 width */}
         <div className="space-y-6">
-          {/* System Health */}
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">System Health</h2>
-            </div>
-            <div className="p-6 space-y-4">
-              {systemHealth.map((item, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {item.status === 'excellent' && <CheckCircle className="w-4 h-4 text-green-600" />}
-                    {item.status === 'good' && <CheckCircle className="w-4 h-4 text-blue-600" />}
-                    {item.status === 'attention' && <AlertCircle className="w-4 h-4 text-amber-600" />}
-                    <span className="text-sm text-gray-700">{item.metric}</span>
-                  </div>
-                  <span className={`text-sm font-semibold ${
-                    item.status === 'excellent' ? 'text-green-600' :
-                    item.status === 'good' ? 'text-blue-600' : 'text-amber-600'
-                  }`}>
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Pending Actions */}
           <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
             <div className="p-6 border-b border-gray-200">

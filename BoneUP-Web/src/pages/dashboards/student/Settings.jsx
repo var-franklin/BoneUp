@@ -49,7 +49,7 @@ const Settings = () => {
 									onClick={() => setActiveTab(tab.id)}
 									className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
 										activeTab === tab.id
-											? "bg-blue-50 text-blue-700"
+											? "bg-green-50 text-[#04510e]"
 											: "text-gray-700 hover:bg-gray-50"
 									}`}
 								>
@@ -73,11 +73,11 @@ const Settings = () => {
 							<div className="p-6 space-y-6">
 								{/* Profile Picture */}
 								<div className="flex items-center gap-6">
-									<div className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center text-white text-3xl font-semibold">
+									<div className="w-20 h-20 rounded-full bg-[#04510e] flex items-center justify-center text-white text-3xl font-semibold">
 										{(user?.full_name || user?.email || "U")[0].toUpperCase()}
 									</div>
 									<div>
-										<button className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+										<button className="px-4 py-2 bg-[#04510e] text-white text-sm font-medium rounded-lg hover:bg-[#033a0a] transition-colors flex items-center gap-2">
 											<Camera className="w-4 h-4" />
 											Change Photo
 										</button>
@@ -94,7 +94,7 @@ const Settings = () => {
 										<input
 											type="text"
 											defaultValue={user?.full_name || ""}
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 											placeholder="Enter your full name"
 										/>
 									</div>
@@ -105,7 +105,7 @@ const Settings = () => {
 										<input
 											type="email"
 											defaultValue={user?.email || ""}
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 											placeholder="your.email@example.com"
 										/>
 									</div>
@@ -116,7 +116,7 @@ const Settings = () => {
 										<input
 											type="tel"
 											placeholder="+1 (555) 000-0000"
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 										/>
 									</div>
 									<div>
@@ -126,7 +126,7 @@ const Settings = () => {
 										<input
 											type="text"
 											placeholder="City, Country"
-											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+											className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 										/>
 									</div>
 								</div>
@@ -138,12 +138,12 @@ const Settings = () => {
 									<textarea
 										rows="4"
 										placeholder="Tell us about yourself..."
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors resize-none"
 									></textarea>
 								</div>
 
 								<div className="flex gap-3 pt-4">
-									<button className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+									<button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-[#033a0a] transition-colors">
 										Save Changes
 									</button>
 									<button className="px-6 py-2.5 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors">
@@ -181,7 +181,7 @@ const Settings = () => {
 													onChange={(e) => setNotifications({...notifications, emailLessons: e.target.checked})}
 													className="sr-only peer"
 												/>
-												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 											</label>
 										</div>
 										<div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -196,7 +196,7 @@ const Settings = () => {
 													onChange={(e) => setNotifications({...notifications, emailAchievements: e.target.checked})}
 													className="sr-only peer"
 												/>
-												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 											</label>
 										</div>
 										<div className="flex items-center justify-between py-3">
@@ -211,7 +211,7 @@ const Settings = () => {
 													onChange={(e) => setNotifications({...notifications, emailReminders: e.target.checked})}
 													className="sr-only peer"
 												/>
-												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 											</label>
 										</div>
 									</div>
@@ -236,7 +236,7 @@ const Settings = () => {
 													onChange={(e) => setNotifications({...notifications, pushSimulations: e.target.checked})}
 													className="sr-only peer"
 												/>
-												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 											</label>
 										</div>
 										<div className="flex items-center justify-between py-3">
@@ -251,14 +251,14 @@ const Settings = () => {
 													onChange={(e) => setNotifications({...notifications, pushStreak: e.target.checked})}
 													className="sr-only peer"
 												/>
-												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+												<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 											</label>
 										</div>
 									</div>
 								</div>
 
 								<div className="flex gap-3 pt-4 border-t border-gray-200">
-									<button className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+									<button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-[#033a0a] transition-colors">
 										Save Preferences
 									</button>
 								</div>
@@ -281,7 +281,7 @@ const Settings = () => {
 									<select
 										value={preferences.language}
 										onChange={(e) => setPreferences({...preferences, language: e.target.value})}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 									>
 										<option value="english">English</option>
 										<option value="spanish">Spanish</option>
@@ -297,7 +297,7 @@ const Settings = () => {
 									<select
 										value={preferences.difficulty}
 										onChange={(e) => setPreferences({...preferences, difficulty: e.target.value})}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-colors"
 									>
 										<option value="beginner">Beginner</option>
 										<option value="intermediate">Intermediate</option>
@@ -317,7 +317,7 @@ const Settings = () => {
 											onChange={(e) => setPreferences({...preferences, autoplay: e.target.checked})}
 											className="sr-only peer"
 										/>
-										<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+										<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 									</label>
 								</div>
 
@@ -333,12 +333,12 @@ const Settings = () => {
 											onChange={(e) => setPreferences({...preferences, subtitles: e.target.checked})}
 											className="sr-only peer"
 										/>
-										<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+										<div className="w-11 h-6 bg-gray-200 peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#04510e]"></div>
 									</label>
 								</div>
 
 								<div className="flex gap-3 pt-4 border-t border-gray-200">
-									<button className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+									<button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-[#033a0a] transition-colors">
 										Save Preferences
 									</button>
 								</div>
@@ -373,7 +373,7 @@ const Settings = () => {
 									<p className="text-sm text-gray-600 mb-3">
 										Add an extra layer of security to your account
 									</p>
-									<button className="px-4 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+									<button className="px-4 py-2.5 bg-[#04510e] text-white text-sm font-medium rounded-lg hover:bg-[#033a0a] transition-colors flex items-center gap-2">
 										<Shield className="w-4 h-4" />
 										Enable 2FA
 									</button>
