@@ -86,9 +86,9 @@ const Courses = () => {
 
 	const getStatusBadge = (status) => {
 		const styles = {
-			"in-progress": "bg-green-50 text-green-700 border-green-200",
-			"completed": "bg-green-50 text-green-700 border-green-200",
-			"not-started": "bg-gray-50 text-gray-600 border-gray-200"
+			"in-progress": "bg-green-50 dark:bg-[#04510e]/20 text-green-700 dark:text-[#04510e] border-green-200 dark:border-[#04510e]/30",
+			"completed": "bg-green-50 dark:bg-emerald-500/20 text-green-700 dark:text-emerald-400 border-green-200 dark:border-emerald-500/30",
+			"not-started": "bg-gray-50 dark:bg-zinc-800 text-gray-600 dark:text-zinc-400 border-gray-200 dark:border-zinc-700"
 		};
 		const labels = {
 			"in-progress": "In Progress",
@@ -104,9 +104,9 @@ const Courses = () => {
 
 	const getLevelBadge = (level) => {
 		const styles = {
-			"Beginner": "bg-green-50 text-green-700 border-green-200",
-			"Intermediate": "bg-amber-50 text-amber-700 border-amber-200",
-			"Advanced": "bg-red-50 text-red-700 border-red-200"
+			"Beginner": "bg-green-50 dark:bg-[#04510e]/20 text-green-700 dark:text-[#04510e] border-green-200 dark:border-[#04510e]/30",
+			"Intermediate": "bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30",
+			"Advanced": "bg-red-50 dark:bg-red-500/20 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/30"
 		};
 		return (
 			<span className={`px-2.5 py-1 rounded-md border text-xs font-medium ${styles[level]}`}>
@@ -119,73 +119,73 @@ const Courses = () => {
 		<div className="p-8">
 			{/* Header */}
 			<div className="mb-8">
-				<h1 className="text-3xl font-semibold text-gray-900">My Courses</h1>
-				<p className="text-gray-600 mt-2">Browse and manage your learning courses</p>
+				<h1 className="text-3xl font-semibold text-gray-900 dark:text-zinc-100">My Courses</h1>
+				<p className="text-gray-600 dark:text-zinc-400 mt-2">Browse and manage your learning courses</p>
 			</div>
 
 			{/* Stats Overview */}
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-							<BookOpen className="w-5 h-5 text-green-700" />
+						<div className="w-10 h-10 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center">
+							<BookOpen className="w-5 h-5 text-green-700 dark:text-[#04510e]" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
 								{allCourses.filter(c => c.status === "in-progress").length}
 							</p>
-							<p className="text-sm text-gray-600">In Progress</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">In Progress</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-							<CheckCircle className="w-5 h-5 text-green-600" />
+						<div className="w-10 h-10 bg-green-50 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center">
+							<CheckCircle className="w-5 h-5 text-green-600 dark:text-emerald-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
 								{allCourses.filter(c => c.status === "completed").length}
 							</p>
-							<p className="text-sm text-gray-600">Completed</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Completed</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center">
-							<Lock className="w-5 h-5 text-gray-600" />
+						<div className="w-10 h-10 bg-gray-50 dark:bg-zinc-800 rounded-lg flex items-center justify-center">
+							<Lock className="w-5 h-5 text-gray-600 dark:text-zinc-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
 								{allCourses.filter(c => c.status === "not-started").length}
 							</p>
-							<p className="text-sm text-gray-600">Not Started</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Not Started</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
-							<Award className="w-5 h-5 text-purple-600" />
+						<div className="w-10 h-10 bg-purple-50 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
+							<Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">{allCourses.length}</p>
-							<p className="text-sm text-gray-600">Total Courses</p>
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{allCourses.length}</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Total Courses</p>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			{/* Filters */}
-			<div className="bg-white rounded-lg border border-gray-200 p-4 mb-6 shadow-sm">
+			<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-4 mb-6 shadow-sm">
 				<div className="flex flex-wrap gap-2">
 					<button
 						onClick={() => setFilter("all")}
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "all"
 								? "bg-[#04510e] text-white shadow-sm"
-								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+								: "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
 						}`}
 					>
 						All Courses
@@ -195,7 +195,7 @@ const Courses = () => {
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "in-progress"
 								? "bg-[#04510e] text-white shadow-sm"
-								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+								: "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
 						}`}
 					>
 						In Progress
@@ -205,7 +205,7 @@ const Courses = () => {
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "completed"
 								? "bg-[#04510e] text-white shadow-sm"
-								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+								: "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
 						}`}
 					>
 						Completed
@@ -215,7 +215,7 @@ const Courses = () => {
 						className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
 							filter === "not-started"
 								? "bg-[#04510e] text-white shadow-sm"
-								: "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+								: "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
 						}`}
 					>
 						Not Started
@@ -230,18 +230,18 @@ const Courses = () => {
 					return (
 						<div
 							key={course.id}
-							className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+							className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-md dark:hover:border-zinc-700 transition-all cursor-pointer group"
 						>
 							{/* Course Header */}
-							<div className="p-6 border-b border-gray-100">
+							<div className="p-6 border-b border-gray-100 dark:border-zinc-800">
 								<div className="flex items-start justify-between mb-4">
-									<div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center group-hover:bg-green-100 transition-colors">
-										<Icon className="w-6 h-6 text-green-700" />
+									<div className="w-12 h-12 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center group-hover:bg-green-100 dark:group-hover:bg-[#04510e]/30 transition-colors">
+										<Icon className="w-6 h-6 text-green-700 dark:text-[#04510e]" />
 									</div>
 									{getLevelBadge(course.level)}
 								</div>
-								<h3 className="text-lg font-semibold text-gray-900 mb-2">{course.name}</h3>
-								<p className="text-sm text-gray-600">{course.description}</p>
+								<h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-2">{course.name}</h3>
+								<p className="text-sm text-gray-600 dark:text-zinc-400">{course.description}</p>
 							</div>
 
 							{/* Course Details */}
@@ -252,10 +252,10 @@ const Courses = () => {
 
 								<div className="space-y-3 mb-4">
 									<div className="flex items-center justify-between text-sm">
-										<span className="text-gray-600">Progress</span>
-										<span className="font-medium text-gray-900">{course.progress}%</span>
+										<span className="text-gray-600 dark:text-zinc-400">Progress</span>
+										<span className="font-medium text-gray-900 dark:text-zinc-100">{course.progress}%</span>
 									</div>
-									<div className="w-full bg-gray-100 rounded-full h-2">
+									<div className="w-full bg-gray-100 dark:bg-zinc-800 rounded-full h-2">
 										<div
 											className="bg-[#04510e] h-2 rounded-full transition-all duration-300"
 											style={{ width: `${course.progress}%` }}
@@ -263,26 +263,26 @@ const Courses = () => {
 									</div>
 								</div>
 
-								<div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100">
+								<div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-zinc-800">
 									<div className="flex items-center gap-2">
-										<BookOpen className="w-4 h-4 text-gray-400" />
+										<BookOpen className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
 										<div>
-											<p className="text-xs text-gray-500">Lessons</p>
-											<p className="text-sm font-medium text-gray-900">
+											<p className="text-xs text-gray-500 dark:text-zinc-500">Lessons</p>
+											<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">
 												{course.completed}/{course.lessons}
 											</p>
 										</div>
 									</div>
 									<div className="flex items-center gap-2">
-										<Clock className="w-4 h-4 text-gray-400" />
+										<Clock className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
 										<div>
-											<p className="text-xs text-gray-500">Duration</p>
-											<p className="text-sm font-medium text-gray-900">{course.duration}</p>
+											<p className="text-xs text-gray-500 dark:text-zinc-500">Duration</p>
+											<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{course.duration}</p>
 										</div>
 									</div>
 								</div>
 
-								<button className="w-full px-4 py-2.5 bg-[#04510e] text-white text-sm font-medium rounded-md hover:bg-[#033a0a] transition-colors flex items-center justify-center gap-2 group">
+								<button className="w-full px-4 py-2.5 bg-[#04510e] text-white text-sm font-medium rounded-md hover:bg-[#05611a] transition-colors flex items-center justify-center gap-2 group">
 									{course.status === "completed" ? (
 										<>
 											<CheckCircle className="w-4 h-4" />

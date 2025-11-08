@@ -110,7 +110,7 @@ const Progress = () => {
 			title: "All Beginner Courses", 
 			date: "Upcoming", 
 			completed: false,
-			icon: "👑",
+			icon: "🏆",
 			description: "Complete all beginner-level courses"
 		}
 	];
@@ -120,12 +120,12 @@ const Progress = () => {
 
 	const getLevelColor = (level) => {
 		const colors = {
-			"Beginner": "text-green-600",
-			"Intermediate": "text-amber-600",
-			"Advanced": "text-orange-600",
-			"Expert": "text-purple-600"
+			"Beginner": "text-green-600 dark:text-green-400",
+			"Intermediate": "text-amber-600 dark:text-amber-400",
+			"Advanced": "text-orange-600 dark:text-orange-400",
+			"Expert": "text-purple-600 dark:text-purple-400"
 		};
-		return colors[level] || "text-gray-600";
+		return colors[level] || "text-gray-600 dark:text-zinc-400";
 	};
 
 	const getProgressColor = (progress) => {
@@ -136,11 +136,11 @@ const Progress = () => {
 	};
 
 	return (
-		<div className="p-8 bg-gray-50 min-h-screen">
+		<div className="p-8 bg-gray-50 dark:bg-zinc-950 min-h-screen">
 			{/* Header */}
 			<div className="mb-8">
-				<h1 className="text-3xl font-bold text-gray-900">Learning Progress</h1>
-				<p className="text-gray-500 mt-1">Monitor your learning journey and skill development</p>
+				<h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100">Learning Progress</h1>
+				<p className="text-gray-500 dark:text-zinc-400 mt-1">Monitor your learning journey and skill development</p>
 			</div>
 
 			{/* Overall Stats */}
@@ -156,36 +156,36 @@ const Progress = () => {
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-							<CheckCircle className="w-6 h-6 text-green-600" />
+						<div className="w-12 h-12 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center">
+							<CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
 						</div>
 						<div>
-							<p className="text-3xl font-bold text-gray-900">24</p>
-							<p className="text-sm text-gray-500">Lessons Completed</p>
+							<p className="text-3xl font-bold text-gray-900 dark:text-zinc-100">24</p>
+							<p className="text-sm text-gray-500 dark:text-zinc-400">Lessons Completed</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-							<Clock className="w-6 h-6 text-purple-600" />
+						<div className="w-12 h-12 bg-purple-100 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
+							<Clock className="w-6 h-6 text-purple-600 dark:text-purple-400" />
 						</div>
 						<div>
-							<p className="text-3xl font-bold text-gray-900">15.5</p>
-							<p className="text-sm text-gray-500">Hours Practiced</p>
+							<p className="text-3xl font-bold text-gray-900 dark:text-zinc-100">15.5</p>
+							<p className="text-sm text-gray-500 dark:text-zinc-400">Hours Practiced</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-							<Zap className="w-6 h-6 text-orange-600" />
+						<div className="w-12 h-12 bg-orange-100 dark:bg-orange-500/20 rounded-lg flex items-center justify-center">
+							<Zap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
 						</div>
 						<div>
-							<p className="text-3xl font-bold text-gray-900">7</p>
-							<p className="text-sm text-gray-500">Day Streak</p>
+							<p className="text-3xl font-bold text-gray-900 dark:text-zinc-100">7</p>
+							<p className="text-sm text-gray-500 dark:text-zinc-400">Day Streak</p>
 						</div>
 					</div>
 				</div>
@@ -194,12 +194,12 @@ const Progress = () => {
 			{/* Main Content */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
 				{/* Weekly Activity Chart */}
-				<div className="lg:col-span-2 bg-white rounded-lg border border-gray-200 shadow-sm">
-					<div className="p-6 border-b border-gray-200">
+				<div className="lg:col-span-2 bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm">
+					<div className="p-6 border-b border-gray-200 dark:border-zinc-800">
 						<div className="flex items-center justify-between">
 							<div>
-								<h2 className="text-xl font-semibold text-gray-900">Activity Overview</h2>
-								<p className="text-sm text-gray-500 mt-1">Your learning activity over time</p>
+								<h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-100">Activity Overview</h2>
+								<p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">Your learning activity over time</p>
 							</div>
 							<div className="flex gap-2">
 								<button
@@ -207,7 +207,7 @@ const Progress = () => {
 									className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
 										selectedTimeframe === "week"
 											? "bg-[#04510e] text-white"
-											: "bg-gray-100 text-gray-700 hover:bg-gray-200"
+											: "bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-200 dark:hover:bg-zinc-700"
 									}`}
 								>
 									Week
@@ -217,7 +217,7 @@ const Progress = () => {
 									className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
 										selectedTimeframe === "month"
 											? "bg-[#04510e] text-white"
-											: "bg-gray-100 text-gray-700 hover:bg-gray-200"
+											: "bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-200 dark:hover:bg-zinc-700"
 									}`}
 								>
 									Month
@@ -231,19 +231,19 @@ const Progress = () => {
 							<div>
 								<div className="flex items-center gap-2 mb-3">
 									<div className="w-3 h-3 bg-[#04510e] rounded-full"></div>
-									<p className="text-sm font-medium text-gray-700">Lessons Completed</p>
+									<p className="text-sm font-medium text-gray-700 dark:text-zinc-300">Lessons Completed</p>
 								</div>
 								<div className="flex items-end justify-between gap-2 h-32">
 									{activityData.map((day, index) => (
 										<div key={index} className="flex-1 flex flex-col items-center gap-2 group">
-											<div className="w-full bg-gray-100 rounded-t relative" style={{ height: '100%' }}>
+											<div className="w-full bg-gray-100 dark:bg-zinc-800 rounded-t relative" style={{ height: '100%' }}>
 												<div
 													className="absolute bottom-0 w-full bg-[#04510e] rounded-t transition-all hover:bg-[#06702f] cursor-pointer"
 													style={{ height: `${(day.lessons / maxLessons) * 100}%` }}
 												></div>
 											</div>
-											<span className="text-xs font-medium text-gray-600">{day.day}</span>
-											<span className="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+											<span className="text-xs font-medium text-gray-600 dark:text-zinc-400">{day.day}</span>
+											<span className="text-xs text-gray-500 dark:text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity">
 												{day.lessons}
 											</span>
 										</div>
@@ -255,19 +255,19 @@ const Progress = () => {
 							<div>
 								<div className="flex items-center gap-2 mb-3">
 									<div className="w-3 h-3 bg-[#2e7d32] rounded-full"></div>
-									<p className="text-sm font-medium text-gray-700">Practice Hours</p>
+									<p className="text-sm font-medium text-gray-700 dark:text-zinc-300">Practice Hours</p>
 								</div>
 								<div className="flex items-end justify-between gap-2 h-32">
 									{activityData.map((day, index) => (
 										<div key={index} className="flex-1 flex flex-col items-center gap-2 group">
-											<div className="w-full bg-gray-100 rounded-t relative" style={{ height: '100%' }}>
+											<div className="w-full bg-gray-100 dark:bg-zinc-800 rounded-t relative" style={{ height: '100%' }}>
 												<div
 													className="absolute bottom-0 w-full bg-[#2e7d32] rounded-t transition-all hover:bg-[#1b5e20] cursor-pointer"
 													style={{ height: `${(day.hours / maxHours) * 100}%` }}
 												></div>
 											</div>
-											<span className="text-xs font-medium text-gray-600">{day.day}</span>
-											<span className="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+											<span className="text-xs font-medium text-gray-600 dark:text-zinc-400">{day.day}</span>
+											<span className="text-xs text-gray-500 dark:text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity">
 												{day.hours}h
 											</span>
 										</div>
@@ -279,31 +279,31 @@ const Progress = () => {
 				</div>
 
 				{/* Recent Scores */}
-				<div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-					<div className="p-6 border-b border-gray-200">
-						<h2 className="text-xl font-semibold text-gray-900">Recent Scores</h2>
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm">
+					<div className="p-6 border-b border-gray-200 dark:border-zinc-800">
+						<h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-100">Recent Scores</h2>
 					</div>
-					<div className="divide-y divide-gray-200">
+					<div className="divide-y divide-gray-200 dark:divide-zinc-800">
 						{recentScores.map((score, index) => (
-							<div key={index} className="p-4 hover:bg-gray-50 transition-colors">
+							<div key={index} className="p-4 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
 								<div className="flex items-center justify-between mb-1">
-									<span className="text-sm font-medium text-gray-900">{score.simulation}</span>
+									<span className="text-sm font-medium text-gray-900 dark:text-zinc-100">{score.simulation}</span>
 									<div className="flex items-center gap-2">
 										<span className={`text-lg font-bold ${
 											score.score >= 90 ? "text-[#04510e]" :
 											score.score >= 80 ? "text-[#2e7d32]" :
-											score.score >= 70 ? "text-amber-600" : "text-red-600"
+											score.score >= 70 ? "text-amber-600 dark:text-amber-400" : "text-red-600 dark:text-red-400"
 										}`}>
 											{score.score}%
 										</span>
 										<span className={`text-xs font-medium ${
-											score.improvement.startsWith('+') ? "text-green-600" : "text-red-600"
+											score.improvement.startsWith('+') ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
 										}`}>
 											{score.improvement}
 										</span>
 									</div>
 								</div>
-								<span className="text-xs text-gray-500">{score.date}</span>
+								<span className="text-xs text-gray-500 dark:text-zinc-500">{score.date}</span>
 							</div>
 						))}
 					</div>
@@ -312,10 +312,10 @@ const Progress = () => {
 
 			{/* Skill Progress */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-				<div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-					<div className="p-6 border-b border-gray-200">
-						<h2 className="text-xl font-semibold text-gray-900">Skill Development</h2>
-						<p className="text-sm text-gray-500 mt-1">Track your progress in different skill areas</p>
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm">
+					<div className="p-6 border-b border-gray-200 dark:border-zinc-800">
+						<h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-100">Skill Development</h2>
+						<p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">Track your progress in different skill areas</p>
 					</div>
 					<div className="p-6 space-y-4">
 						{skillProgress.map((skill, index) => (
@@ -323,21 +323,21 @@ const Progress = () => {
 								key={index}
 								className={`p-4 rounded-lg border-2 transition-all cursor-pointer ${
 									selectedSkill === index 
-										? "border-[#04510e] bg-green-50" 
-										: "border-gray-100 hover:border-gray-200"
+										? "border-[#04510e] bg-green-50 dark:bg-[#04510e]/10" 
+										: "border-gray-100 dark:border-zinc-800 hover:border-gray-200 dark:hover:border-zinc-700"
 								}`}
 								onClick={() => setSelectedSkill(selectedSkill === index ? null : index)}
 							>
 								<div className="flex items-center justify-between mb-2">
 									<div className="flex-1">
-										<p className="text-sm font-medium text-gray-900">{skill.skill}</p>
+										<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{skill.skill}</p>
 										<p className={`text-xs font-medium ${getLevelColor(skill.level)}`}>
 											{skill.level}
 										</p>
 									</div>
-									<span className="text-sm font-bold text-gray-900">{skill.progress}%</span>
+									<span className="text-sm font-bold text-gray-900 dark:text-zinc-100">{skill.progress}%</span>
 								</div>
-								<div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+								<div className="w-full bg-gray-200 dark:bg-zinc-700 rounded-full h-2 mb-2">
 									<div
 										className="h-2 rounded-full transition-all"
 										style={{ 
@@ -347,9 +347,9 @@ const Progress = () => {
 									></div>
 								</div>
 								{selectedSkill === index && (
-									<div className="mt-3 pt-3 border-t border-gray-200">
-										<p className="text-xs text-gray-600 mb-2">{skill.description}</p>
-										<div className="flex items-center gap-2 text-xs text-gray-500">
+									<div className="mt-3 pt-3 border-t border-gray-200 dark:border-zinc-800">
+										<p className="text-xs text-gray-600 dark:text-zinc-400 mb-2">{skill.description}</p>
+										<div className="flex items-center gap-2 text-xs text-gray-500 dark:text-zinc-500">
 											<Clock className="w-3 h-3" />
 											<span>Last practiced: {skill.lastPracticed}</span>
 										</div>
@@ -361,10 +361,10 @@ const Progress = () => {
 				</div>
 
 				{/* Milestones */}
-				<div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-					<div className="p-6 border-b border-gray-200">
-						<h2 className="text-xl font-semibold text-gray-900">Milestones</h2>
-						<p className="text-sm text-gray-500 mt-1">Major achievements in your learning journey</p>
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm">
+					<div className="p-6 border-b border-gray-200 dark:border-zinc-800">
+						<h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-100">Milestones</h2>
+						<p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">Major achievements in your learning journey</p>
 					</div>
 					<div className="p-6 space-y-4">
 						{milestones.map((milestone, index) => (
@@ -372,23 +372,23 @@ const Progress = () => {
 								key={index} 
 								className={`flex items-start gap-3 p-3 rounded-lg transition-all ${
 									milestone.completed 
-										? "bg-green-50 border border-green-200" 
-										: "bg-gray-50 border border-gray-200"
+										? "bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/30" 
+										: "bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700"
 								}`}
 							>
 								<div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xl ${
-									milestone.completed ? "bg-green-100" : "bg-gray-100"
+									milestone.completed ? "bg-green-100 dark:bg-green-500/20" : "bg-gray-100 dark:bg-zinc-700"
 								}`}>
 									{milestone.completed ? "✓" : milestone.icon}
 								</div>
 								<div className="flex-1">
 									<p className={`text-sm font-medium ${
-										milestone.completed ? "text-gray-900" : "text-gray-500"
+										milestone.completed ? "text-gray-900 dark:text-zinc-100" : "text-gray-500 dark:text-zinc-400"
 									}`}>
 										{milestone.title}
 									</p>
-									<p className="text-xs text-gray-500 mt-1">{milestone.description}</p>
-									<p className="text-xs text-gray-500 mt-1 font-medium">{milestone.date}</p>
+									<p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">{milestone.description}</p>
+									<p className="text-xs text-gray-500 dark:text-zinc-500 mt-1 font-medium">{milestone.date}</p>
 								</div>
 							</div>
 						))}
@@ -397,35 +397,35 @@ const Progress = () => {
 			</div>
 
 			{/* Insights */}
-			<div className="bg-green-50 border border-green-200 rounded-lg p-6 shadow-sm">
+			<div className="bg-green-50 dark:bg-[#04510e]/10 border border-green-200 dark:border-[#04510e]/30 rounded-lg p-6 shadow-sm">
 				<h3 className="text-lg font-semibold text-[#04510e] mb-3 flex items-center gap-2">
 					<Zap className="w-5 h-5" />
 					<span>Learning Insights</span>
 				</h3>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-					<div className="bg-white rounded-lg p-4 border border-green-100 shadow-sm">
+					<div className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-green-100 dark:border-[#04510e]/20 shadow-sm">
 						<div className="flex items-center gap-2 mb-2">
 							<Calendar className="w-4 h-4 text-[#04510e]" />
-							<p className="text-sm font-medium text-gray-900">Most Active Day</p>
+							<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">Most Active Day</p>
 						</div>
 						<p className="text-2xl font-bold text-[#04510e]">Thursday</p>
-						<p className="text-xs text-gray-500 mt-1">4 lessons, 3.0 hours</p>
+						<p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">4 lessons, 3.0 hours</p>
 					</div>
-					<div className="bg-white rounded-lg p-4 border border-green-100 shadow-sm">
+					<div className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-green-100 dark:border-[#04510e]/20 shadow-sm">
 						<div className="flex items-center gap-2 mb-2">
 							<Target className="w-4 h-4 text-[#04510e]" />
-							<p className="text-sm font-medium text-gray-900">Average Score</p>
+							<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">Average Score</p>
 						</div>
 						<p className="text-2xl font-bold text-[#04510e]">85%</p>
-						<p className="text-xs text-gray-500 mt-1">Above class average (78%)</p>
+						<p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">Above class average (78%)</p>
 					</div>
-					<div className="bg-white rounded-lg p-4 border border-green-100 shadow-sm">
+					<div className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-green-100 dark:border-[#04510e]/20 shadow-sm">
 						<div className="flex items-center gap-2 mb-2">
 							<TrendingUp className="w-4 h-4 text-[#04510e]" />
-							<p className="text-sm font-medium text-gray-900">Improvement Rate</p>
+							<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">Improvement Rate</p>
 						</div>
 						<p className="text-2xl font-bold text-[#04510e]">+12%</p>
-						<p className="text-xs text-gray-500 mt-1">Compared to last week</p>
+						<p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">Compared to last week</p>
 					</div>
 				</div>
 			</div>

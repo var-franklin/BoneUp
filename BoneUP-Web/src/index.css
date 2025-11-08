@@ -3,6 +3,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Custom colors */
+  --color-green-primary: #04510e;
+  --color-green-dark: #033a0a;
+  --color-green-light: #05611a;
+}
+
+/* Global styles */
 * {
   font-family: 'Outfit', sans-serif;
 }
+
+/* Enable class-based dark mode for Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));

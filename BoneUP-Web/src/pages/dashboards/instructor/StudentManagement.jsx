@@ -4,26 +4,18 @@ import { useState } from "react";
 import { 
   Users, 
   Search, 
-  Filter, 
   Mail, 
   MessageSquare,
-  TrendingUp,
-  TrendingDown,
   Award,
-  Clock,
   BookOpen,
-  Target,
-  BarChart3,
   Eye,
   AlertCircle,
-  CheckCircle,
-  XCircle
+  CheckCircle
 } from "lucide-react";
 
 const StudentManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
-  const [selectedStudent, setSelectedStudent] = useState(null);
 
   const students = [
     {
@@ -149,8 +141,8 @@ const StudentManagement = () => {
 
   const getStatusBadge = (status) => {
     const styles = {
-      "active": "bg-green-50 text-green-700 border-green-200",
-      "inactive": "bg-gray-50 text-gray-600 border-gray-200"
+      "active": "bg-green-50 dark:bg-emerald-500/20 text-green-700 dark:text-emerald-400 border-green-200 dark:border-emerald-500/30",
+      "inactive": "bg-gray-50 dark:bg-zinc-800 text-gray-600 dark:text-zinc-400 border-gray-200 dark:border-zinc-700"
     };
     return (
       <span className={`px-2.5 py-1 rounded-md text-xs font-medium border ${styles[status]}`}>
@@ -161,9 +153,9 @@ const StudentManagement = () => {
 
   const getPerformanceBadge = (performance) => {
     const styles = {
-      "excellent": { bg: "bg-green-50", text: "text-green-700", border: "border-green-200", icon: CheckCircle },
-      "good": { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", icon: CheckCircle },
-      "needs-attention": { bg: "bg-red-50", text: "text-red-700", border: "border-red-200", icon: AlertCircle }
+      "excellent": { bg: "bg-green-50 dark:bg-emerald-500/20", text: "text-green-700 dark:text-emerald-400", border: "border-green-200 dark:border-emerald-500/30", icon: CheckCircle },
+      "good": { bg: "bg-blue-50 dark:bg-blue-500/20", text: "text-blue-700 dark:text-blue-400", border: "border-blue-200 dark:border-blue-500/30", icon: CheckCircle },
+      "needs-attention": { bg: "bg-red-50 dark:bg-red-500/20", text: "text-red-700 dark:text-red-400", border: "border-red-200 dark:border-red-500/30", icon: AlertCircle }
     };
     const style = styles[performance];
     const Icon = style.icon;
@@ -176,85 +168,85 @@ const StudentManagement = () => {
   };
 
   const getScoreColor = (score) => {
-    if (score >= 90) return "text-green-600";
-    if (score >= 75) return "text-blue-600";
-    if (score >= 60) return "text-amber-600";
-    return "text-red-600";
+    if (score >= 90) return "text-green-600 dark:text-green-400";
+    if (score >= 75) return "text-blue-600 dark:text-blue-400";
+    if (score >= 60) return "text-amber-600 dark:text-amber-400";
+    return "text-red-600 dark:text-red-400";
   };
 
   return (
     <div className="p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900">Student Management</h1>
-        <p className="text-gray-600 mt-2">Monitor and manage student progress</p>
+        <h1 className="text-3xl font-semibold text-gray-900 dark:text-zinc-100">Student Management</h1>
+        <p className="text-gray-600 dark:text-zinc-400 mt-2">Monitor and manage student progress</p>
       </div>
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <Users className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center">
+              <Users className="w-5 h-5 text-green-700 dark:text-[#04510e]" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-gray-900">{students.length}</p>
-              <p className="text-sm text-gray-600">Total Students</p>
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{students.length}</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Total Students</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className="w-10 h-10 bg-green-50 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600 dark:text-emerald-400" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {students.filter(s => s.status === "active").length}
               </p>
-              <p className="text-sm text-gray-600">Active Students</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Active Students</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
-              <Award className="w-5 h-5 text-purple-600" />
+            <div className="w-10 h-10 bg-purple-50 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
+              <Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {Math.round(students.reduce((acc, s) => acc + s.avgScore, 0) / students.length)}%
               </p>
-              <p className="text-sm text-gray-600">Avg Score</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Avg Score</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center">
-              <AlertCircle className="w-5 h-5 text-orange-600" />
+            <div className="w-10 h-10 bg-orange-50 dark:bg-orange-500/20 rounded-lg flex items-center justify-center">
+              <AlertCircle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <p className="text-2xl font-semibold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {students.filter(s => s.performance === "needs-attention").length}
               </p>
-              <p className="text-sm text-gray-600">Need Attention</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Need Attention</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Search and Filter */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6 shadow-sm">
+      <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-4 mb-6 shadow-sm">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-zinc-400" />
             <input
               type="text"
               placeholder="Search students by name or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-400 rounded-lg focus:ring-2 focus:ring-[#04510e] focus:border-transparent transition-all"
             />
           </div>
           <div className="flex gap-2">
@@ -262,8 +254,8 @@ const StudentManagement = () => {
               onClick={() => setFilterStatus("all")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 filterStatus === "all"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  ? "bg-[#04510e] text-white shadow-sm"
+                  : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
               }`}
             >
               All
@@ -272,8 +264,8 @@ const StudentManagement = () => {
               onClick={() => setFilterStatus("active")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 filterStatus === "active"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  ? "bg-[#04510e] text-white shadow-sm"
+                  : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
               }`}
             >
               Active
@@ -282,8 +274,8 @@ const StudentManagement = () => {
               onClick={() => setFilterStatus("inactive")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 filterStatus === "inactive"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                  ? "bg-[#04510e] text-white shadow-sm"
+                  : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
               }`}
             >
               Inactive
@@ -293,48 +285,48 @@ const StudentManagement = () => {
       </div>
 
       {/* Students Table */}
-      <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-gray-200">
+            <thead className="bg-gray-50 dark:bg-zinc-800 border-b border-gray-200 dark:border-zinc-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Student
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Performance
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Progress
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Avg Score
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Courses
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Last Active
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 dark:divide-zinc-800">
               {filteredStudents.map((student) => (
-                <tr key={student.id} className="hover:bg-gray-50 transition-colors">
+                <tr key={student.id} className="hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                      <div className="w-10 h-10 bg-[#04510e] rounded-full flex items-center justify-center text-white font-semibold text-sm">
                         {student.avatar}
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-900">{student.name}</p>
-                        <p className="text-xs text-gray-500">{student.email}</p>
+                        <p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{student.name}</p>
+                        <p className="text-xs text-gray-500 dark:text-zinc-400">{student.email}</p>
                       </div>
                     </div>
                   </td>
@@ -346,13 +338,13 @@ const StudentManagement = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <div className="w-24 bg-gray-200 rounded-full h-2">
+                      <div className="w-24 bg-gray-200 dark:bg-zinc-700 rounded-full h-2">
                         <div
-                          className="bg-blue-600 h-2 rounded-full"
+                          className="bg-[#04510e] h-2 rounded-full"
                           style={{ width: `${student.progress}%` }}
                         ></div>
                       </div>
-                      <span className="text-sm text-gray-600">{student.progress}%</span>
+                      <span className="text-sm text-gray-600 dark:text-zinc-400">{student.progress}%</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -361,23 +353,23 @@ const StudentManagement = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-zinc-400">
                       <BookOpen className="w-4 h-4" />
                       <span>{student.enrolledCourses}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-zinc-400">
                     {student.lastActive}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">
+                      <button className="p-2 text-gray-600 dark:text-zinc-400 hover:text-[#04510e] dark:hover:text-[#04510e] hover:bg-green-50 dark:hover:bg-[#04510e]/20 rounded-md transition-colors">
                         <Eye className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">
+                      <button className="p-2 text-gray-600 dark:text-zinc-400 hover:text-[#04510e] dark:hover:text-[#04510e] hover:bg-green-50 dark:hover:bg-[#04510e]/20 rounded-md transition-colors">
                         <Mail className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">
+                      <button className="p-2 text-gray-600 dark:text-zinc-400 hover:text-[#04510e] dark:hover:text-[#04510e] hover:bg-green-50 dark:hover:bg-[#04510e]/20 rounded-md transition-colors">
                         <MessageSquare className="w-4 h-4" />
                       </button>
                     </div>
@@ -391,10 +383,10 @@ const StudentManagement = () => {
 
       {/* Empty State */}
       {filteredStudents.length === 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-12 text-center mt-6">
-          <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">No students found</h3>
-          <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm p-12 text-center mt-6">
+          <Users className="w-12 h-12 text-gray-400 dark:text-zinc-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-2">No students found</h3>
+          <p className="text-gray-600 dark:text-zinc-400">Try adjusting your search or filter criteria</p>
         </div>
       )}
     </div>

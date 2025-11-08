@@ -1,150 +1,84 @@
-import { Gamepad2, Star, Target, Trophy, Clock, Play, Lock, Zap } from "lucide-react";
+import { Gamepad2, Star, Clock, Play, Zap, Trophy, CheckCircle } from "lucide-react";
 
 const Simulations = () => {
-	const simulations = [
-		{
-			id: 1,
-			name: "Salmon Filleting",
-			description: "Practice filleting techniques on a realistic 3D salmon model",
-			difficulty: "Beginner",
-			duration: "15 min",
-			attempts: 12,
-			bestScore: 85,
-			available: true,
-			icon: Gamepad2
-		},
-		{
-			id: 2,
-			name: "Tilapia Deboning",
-			description: "Master the deboning process for tilapia with step-by-step guidance",
-			difficulty: "Beginner",
-			duration: "20 min",
-			attempts: 8,
-			bestScore: 92,
-			available: true,
-			icon: Target
-		},
-		{
-			id: 3,
-			name: "Tuna Steak Preparation",
-			description: "Learn to prepare and portion tuna steaks from a whole fish",
-			difficulty: "Intermediate",
-			duration: "25 min",
-			attempts: 5,
-			bestScore: 78,
-			available: true,
-			icon: Zap
-		},
-		{
-			id: 4,
-			name: "Mackerel Complete Deboning",
-			description: "Advanced simulation for complete mackerel deboning",
-			difficulty: "Intermediate",
-			duration: "30 min",
-			attempts: 3,
-			bestScore: 65,
-			available: true,
-			icon: Star
-		},
-		{
-			id: 5,
-			name: "Whole Snapper Processing",
-			description: "Process a whole snapper from scaling to final portioning",
-			difficulty: "Advanced",
-			duration: "35 min",
-			attempts: 0,
-			bestScore: null,
-			available: false,
-			icon: Trophy
-		},
-		{
-			id: 6,
-			name: "Multi-Fish Challenge",
-			description: "Time-based challenge to process multiple fish species",
-			difficulty: "Advanced",
-			duration: "45 min",
-			attempts: 0,
-			bestScore: null,
-			available: false,
-			icon: Trophy
-		}
-	];
-
-	const getDifficultyColor = (difficulty) => {
-		const colors = {
-			Beginner: "bg-green-50 text-green-700 border-green-200",
-			Intermediate: "bg-amber-50 text-amber-700 border-amber-200",
-			Advanced: "bg-red-50 text-red-700 border-red-200"
-		};
-		return colors[difficulty];
+	const simulation = {
+		id: 1,
+		name: "Bangus (Milkfish) Deboning",
+		description: "Master the complete bangus deboning process through interactive step-by-step guidance",
+		difficulty: "Intermediate",
+		duration: "30 min",
+		attempts: 15,
+		bestScore: 87,
+		available: true,
+		icon: Gamepad2,
+		steps: [
+			"Split along the dorsal side",
+			"Remove backbone carefully",
+			"Extract lateral bones",
+			"Clean and prepare final portion"
+		]
 	};
 
 	const getScoreColor = (score) => {
 		if (score >= 90) return "text-[#04510e]";
-		if (score >= 75) return "text-[#2e7d32]";
-		if (score >= 60) return "text-amber-600";
-		return "text-red-600";
+		if (score >= 75) return "text-emerald-600 dark:text-emerald-400";
+		if (score >= 60) return "text-amber-600 dark:text-amber-400";
+		return "text-red-600 dark:text-red-400";
 	};
 
 	return (
 		<div className="p-8">
 			{/* Header */}
 			<div className="mb-8">
-				<h1 className="text-3xl font-semibold text-gray-900">Practice Simulations</h1>
-				<p className="text-gray-600 mt-2">Hone your skills with interactive 3D fish deboning simulations</p>
+				<h1 className="text-3xl font-semibold text-gray-900 dark:text-zinc-100">Bangus Deboning Simulation</h1>
+				<p className="text-gray-600 dark:text-zinc-400 mt-2">Practice your bangus deboning skills with interactive 3D simulation and real-time feedback</p>
 			</div>
 
 			{/* Stats */}
 			<div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-							<Gamepad2 className="w-5 h-5 text-green-700" />
+						<div className="w-10 h-10 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center">
+							<Gamepad2 className="w-5 h-5 text-green-700 dark:text-[#04510e]" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
-								{simulations.reduce((acc, sim) => acc + sim.attempts, 0)}
-							</p>
-							<p className="text-sm text-gray-600">Total Attempts</p>
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{simulation.attempts}</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Total Attempts</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-							<Star className="w-5 h-5 text-green-600" />
+						<div className="w-10 h-10 bg-green-50 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center">
+							<Star className="w-5 h-5 text-green-600 dark:text-emerald-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
-								{Math.round(simulations.filter(s => s.bestScore).reduce((acc, sim) => acc + sim.bestScore, 0) / simulations.filter(s => s.bestScore).length)}
-							</p>
-							<p className="text-sm text-gray-600">Average Score</p>
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{simulation.bestScore}%</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Best Score</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
-							<Target className="w-5 h-5 text-purple-600" />
+						<div className="w-10 h-10 bg-purple-50 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
+							<Clock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
-								{simulations.filter(s => s.available).length}
-							</p>
-							<p className="text-sm text-gray-600">Available</p>
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{simulation.duration}</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Average Duration</p>
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+				<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
 					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center">
-							<Trophy className="w-5 h-5 text-orange-600" />
+						<div className="w-10 h-10 bg-orange-50 dark:bg-orange-500/20 rounded-lg flex items-center justify-center">
+							<Trophy className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 						</div>
 						<div>
-							<p className="text-2xl font-semibold text-gray-900">
-								{simulations.filter(s => s.bestScore && s.bestScore >= 90).length}
+							<p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
+								{simulation.bestScore >= 90 ? "1" : "0"}
 							</p>
-							<p className="text-sm text-gray-600">High Scores</p>
+							<p className="text-sm text-gray-600 dark:text-zinc-400">Mastery Achieved</p>
 						</div>
 					</div>
 				</div>
@@ -156,137 +90,145 @@ const Simulations = () => {
 					<div>
 						<div className="flex items-center gap-2 mb-2">
 							<Zap className="w-6 h-6" />
-							<h2 className="text-2xl font-semibold">Try Our Latest Simulation!</h2>
+							<h2 className="text-2xl font-semibold">Interactive Bangus Deboning Training</h2>
 						</div>
 						<p className="text-green-100 mb-4">
-							New interactive tilapia deboning simulation with real-time feedback
+							Learn the complete bangus deboning process with step-by-step guidance and real-time feedback
 						</p>
 						<button className="px-6 py-2.5 bg-white text-[#04510e] font-medium rounded-md hover:bg-green-50 transition-colors flex items-center gap-2">
 							<Play className="w-4 h-4" />
-							Launch Now
+							Start Practice
 						</button>
 					</div>
 					<div className="hidden md:block">
-						<Target className="w-24 h-24 text-white opacity-20" />
+						<Gamepad2 className="w-24 h-24 text-white opacity-20" />
 					</div>
 				</div>
 			</div>
 
-			{/* Simulations Grid */}
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{simulations.map((sim) => {
-					const Icon = sim.icon;
-					return (
-						<div
-							key={sim.id}
-							className={`bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all group ${
-								!sim.available && "opacity-60"
-							}`}
-						>
-							{/* Simulation Header */}
-							<div className="p-6 border-b border-gray-100">
-								<div className="flex items-start justify-between mb-4">
-									<div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
-										sim.available ? "bg-green-50 group-hover:bg-green-100" : "bg-gray-50"
-									}`}>
-										<Icon className={`w-6 h-6 ${sim.available ? "text-green-700" : "text-gray-400"}`} />
+			{/* Main Simulation Card */}
+			<div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all mb-8">
+				{/* Simulation Header */}
+				<div className="p-6 border-b border-gray-100 dark:border-zinc-800">
+					<div className="flex items-start justify-between mb-4">
+						<div className="w-12 h-12 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center hover:bg-green-100 dark:hover:bg-[#04510e]/30 transition-colors">
+							<Gamepad2 className="w-6 h-6 text-green-700 dark:text-[#04510e]" />
+						</div>
+						<span className="px-2.5 py-1 rounded-md border text-xs font-medium bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30">
+							{simulation.difficulty}
+						</span>
+					</div>
+					<h3 className="text-xl font-semibold text-gray-900 dark:text-zinc-100 mb-3">{simulation.name}</h3>
+					<p className="text-sm text-gray-600 dark:text-zinc-400 mb-4">{simulation.description}</p>
+					
+					{/* Sequential Steps Preview */}
+					<div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-4 border border-gray-100 dark:border-zinc-700">
+						<h4 className="text-sm font-semibold text-gray-900 dark:text-zinc-100 mb-3">Deboning Steps:</h4>
+						<div className="space-y-2">
+							{simulation.steps.map((step, index) => (
+								<div key={index} className="flex items-center gap-2">
+									<div className="w-6 h-6 bg-[#04510e] text-white rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0">
+										{index + 1}
 									</div>
-									{!sim.available && (
-										<div className="flex items-center gap-1 bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md text-xs font-medium border border-gray-200">
-											<Lock className="w-3 h-3" />
-											Locked
-										</div>
-									)}
+									<span className="text-sm text-gray-700 dark:text-zinc-300">{step}</span>
 								</div>
-								<div className="flex items-start justify-between mb-3">
-									<h3 className="text-lg font-semibold text-gray-900">{sim.name}</h3>
-									<span className={`px-2.5 py-1 rounded-md border text-xs font-medium ${getDifficultyColor(sim.difficulty)}`}>
-										{sim.difficulty}
-									</span>
-								</div>
-								<p className="text-sm text-gray-600">{sim.description}</p>
-							</div>
+							))}
+						</div>
+					</div>
+				</div>
 
-							{/* Simulation Details */}
-							<div className="p-6">
-								<div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100">
-									<div className="flex items-center gap-2">
-										<Clock className="w-4 h-4 text-gray-400" />
-										<div>
-											<p className="text-xs text-gray-500">Duration</p>
-											<p className="text-sm font-medium text-gray-900">{sim.duration}</p>
-										</div>
-									</div>
-									<div className="flex items-center gap-2">
-										<Gamepad2 className="w-4 h-4 text-gray-400" />
-										<div>
-											<p className="text-xs text-gray-500">Attempts</p>
-											<p className="text-sm font-medium text-gray-900">{sim.attempts}</p>
-										</div>
-									</div>
-								</div>
-
-								{sim.bestScore !== null && (
-									<div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-										<div className="flex items-center justify-between">
-											<span className="text-sm text-gray-600">Best Score</span>
-											<span className={`text-2xl font-semibold ${getScoreColor(sim.bestScore)}`}>
-												{sim.bestScore}%
-											</span>
-										</div>
-									</div>
-								)}
-
-								<button
-									className={`w-full px-4 py-2.5 text-sm font-medium rounded-md transition-colors flex items-center justify-center gap-2 ${
-										sim.available
-											? "bg-[#04510e] text-white hover:bg-[#033a0a]"
-											: "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
-									}`}
-									disabled={!sim.available}
-								>
-									{sim.available ? (
-										<>
-											<Play className="w-4 h-4" />
-											{sim.attempts > 0 ? "Practice Again" : "Start Simulation"}
-										</>
-									) : (
-										<>
-											<Lock className="w-4 h-4" />
-											Complete Prerequisites
-										</>
-									)}
-								</button>
+				{/* Simulation Details */}
+				<div className="p-6">
+					<div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-zinc-800">
+						<div className="flex items-center gap-2">
+							<Clock className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
+							<div>
+								<p className="text-xs text-gray-500 dark:text-zinc-500">Duration</p>
+								<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{simulation.duration}</p>
 							</div>
 						</div>
-					);
-				})}
+						<div className="flex items-center gap-2">
+							<Gamepad2 className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
+							<div>
+								<p className="text-xs text-gray-500 dark:text-zinc-500">Your Attempts</p>
+								<p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{simulation.attempts}</p>
+							</div>
+						</div>
+					</div>
+
+					<div className="mb-4 p-3 bg-gray-50 dark:bg-zinc-800 rounded-lg border border-gray-100 dark:border-zinc-700">
+						<div className="flex items-center justify-between">
+							<span className="text-sm text-gray-600 dark:text-zinc-400">Your Best Score</span>
+							<span className={`text-2xl font-semibold ${getScoreColor(simulation.bestScore)}`}>
+								{simulation.bestScore}%
+							</span>
+						</div>
+					</div>
+
+					<button className="w-full px-4 py-2.5 text-sm font-medium rounded-md transition-colors flex items-center justify-center gap-2 bg-[#04510e] text-white hover:bg-[#033a0a]">
+						<Play className="w-4 h-4" />
+						{simulation.attempts > 0 ? "Practice Again" : "Start Simulation"}
+					</button>
+				</div>
+			</div>
+
+			{/* Learning Approach Section */}
+			<div className="bg-green-50 dark:bg-[#04510e]/10 border border-green-200 dark:border-[#04510e]/30 rounded-lg p-6 mb-6">
+				<div className="flex items-start gap-3">
+					<div className="w-10 h-10 bg-green-100 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+						<CheckCircle className="w-5 h-5 text-[#04510e]" />
+					</div>
+					<div>
+						<h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-3">Sequential Mastery Approach</h3>
+						<p className="text-sm text-gray-700 dark:text-zinc-300 mb-3">
+							Our simulation uses a step-by-step learning method where you must complete each deboning stage correctly before advancing to the next. This ensures you master each technique before moving forward.
+						</p>
+						<ul className="space-y-2 text-sm text-gray-700 dark:text-zinc-300">
+							<li className="flex items-start gap-2">
+								<span className="text-[#04510e] mt-0.5">•</span>
+								<span>Complete each step correctly to progress to the next stage</span>
+							</li>
+							<li className="flex items-start gap-2">
+								<span className="text-[#04510e] mt-0.5">•</span>
+								<span>Receive immediate feedback on your technique and positioning</span>
+							</li>
+							<li className="flex items-start gap-2">
+								<span className="text-[#04510e] mt-0.5">•</span>
+								<span>Build muscle memory through repeated, guided practice</span>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 
 			{/* Tips Section */}
-			<div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
+			<div className="bg-green-50 dark:bg-[#04510e]/10 border border-green-200 dark:border-[#04510e]/30 rounded-lg p-6">
 				<div className="flex items-start gap-3">
-					<div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+					<div className="w-10 h-10 bg-green-100 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center flex-shrink-0">
 						<Zap className="w-5 h-5 text-[#04510e]" />
 					</div>
 					<div>
-						<h3 className="text-lg font-semibold text-gray-900 mb-3">Simulation Tips</h3>
-						<ul className="space-y-2 text-sm text-gray-700">
+						<h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-3">Bangus Deboning Tips</h3>
+						<ul className="space-y-2 text-sm text-gray-700 dark:text-zinc-300">
 							<li className="flex items-start gap-2">
 								<span className="text-[#04510e] mt-0.5">•</span>
-								<span>Take your time and follow the highlighted guides for best results</span>
+								<span>When splitting the dorsal side, maintain a steady angle along the backbone to ensure clean separation</span>
 							</li>
 							<li className="flex items-start gap-2">
 								<span className="text-[#04510e] mt-0.5">•</span>
-								<span>Use the pause button to review your technique at any time</span>
+								<span>Remove the backbone carefully by starting from the head end and working toward the tail</span>
 							</li>
 							<li className="flex items-start gap-2">
 								<span className="text-[#04510e] mt-0.5">•</span>
-								<span>Complete beginner simulations to unlock advanced challenges</span>
+								<span>Extract lateral bones systematically, checking for any remaining small bones after each section</span>
 							</li>
 							<li className="flex items-start gap-2">
 								<span className="text-[#04510e] mt-0.5">•</span>
-								<span>Aim for 90% or higher to earn achievement badges</span>
+								<span>Follow the visual guides and highlighted areas for optimal cutting paths</span>
+							</li>
+							<li className="flex items-start gap-2">
+								<span className="text-[#04510e] mt-0.5">•</span>
+								<span>Aim for 90% or higher score to demonstrate mastery of the complete deboning process</span>
 							</li>
 						</ul>
 					</div>

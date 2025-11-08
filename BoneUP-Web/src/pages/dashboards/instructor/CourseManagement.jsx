@@ -9,16 +9,13 @@ import {
   Clock,
   BarChart3,
   FileText,
-  Video,
   CheckCircle,
   Fish,
-  Target,
-  Award
+  Target
 } from "lucide-react";
 
 const CourseManagement = () => {
   const [filter, setFilter] = useState("all");
-  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const courses = [
     {
@@ -49,7 +46,7 @@ const CourseManagement = () => {
       avgScore: 75,
       lastUpdated: "1 day ago",
       fishSpecies: "Bangus (Milkfish)",
-      topics: ["Dorsal splitting technique", "Backbone removal", "Y-bone identification", "Y-bone extraction methods", "Rib bone removal", "Quality assessment"]
+      topics: ["Dorsal splitting technique", "Backbone removal", "Y-bone identification", "Y-bone extraction methods"]
     },
     {
       id: 3,
@@ -79,7 +76,7 @@ const CourseManagement = () => {
       avgScore: 80,
       lastUpdated: "1 week ago",
       fishSpecies: "Galunggong (Round Scad)",
-      topics: ["Small fish handling", "Head removal", "Dorsal line cutting", "Fine bone removal", "Precision techniques"]
+      topics: ["Small fish handling", "Head removal", "Dorsal line cutting", "Fine bone removal"]
     },
     {
       id: 5,
@@ -113,21 +110,6 @@ const CourseManagement = () => {
     },
     {
       id: 7,
-      name: "Hito (Catfish) Basic Processing",
-      description: "Foundational deboning skills with simple bone structure",
-      status: "published",
-      enrolled: 30,
-      lessons: 6,
-      duration: "3 hours",
-      level: "Beginner",
-      avgProgress: 88,
-      avgScore: 92,
-      lastUpdated: "6 days ago",
-      fishSpecies: "Hito (Catfish)",
-      topics: ["Skinning techniques", "Simple backbone removal", "Basic filleting"]
-    },
-    {
-      id: 8,
       name: "Advanced Deboning: Multi-Species Comparison",
       description: "Comparative study of deboning techniques across different fish species",
       status: "draft",
@@ -139,10 +121,10 @@ const CourseManagement = () => {
       avgScore: 0,
       lastUpdated: "2 hours ago",
       fishSpecies: "Multiple Species",
-      topics: ["Species-specific adaptations", "Bone structure comparison", "Technique optimization", "Professional standards"]
+      topics: ["Species-specific adaptations", "Bone structure comparison", "Technique optimization"]
     },
     {
-      id: 9,
+      id: 8,
       name: "Fish Anatomy and Bone Structure",
       description: "Comprehensive study of fish skeletal systems and anatomy for effective deboning",
       status: "draft",
@@ -165,21 +147,25 @@ const CourseManagement = () => {
 
   const getStatusBadge = (status) => {
     const styles = {
-      "published": "bg-green-50 text-green-700 border-green-200",
-      "draft": "bg-gray-50 text-gray-600 border-gray-200"
+      "published": "bg-green-50 dark:bg-emerald-500/20 text-green-700 dark:text-emerald-400 border-green-200 dark:border-emerald-500/30",
+      "draft": "bg-gray-50 dark:bg-zinc-800 text-gray-600 dark:text-zinc-400 border-gray-200 dark:border-zinc-700"
+    };
+    const labels = {
+      "published": "Published",
+      "draft": "Draft"
     };
     return (
       <span className={`px-2.5 py-1 rounded-md text-xs font-medium border ${styles[status]}`}>
-        {status === "published" ? "Published" : "Draft"}
+        {labels[status]}
       </span>
     );
   };
 
   const getLevelBadge = (level) => {
     const styles = {
-      "Beginner": "bg-emerald-50 text-emerald-700 border-emerald-200",
-      "Intermediate": "bg-amber-50 text-amber-700 border-amber-200",
-      "Advanced": "bg-rose-50 text-rose-700 border-rose-200"
+      "Beginner": "bg-green-50 dark:bg-[#04510e]/20 text-green-700 dark:text-[#04510e] border-green-200 dark:border-[#04510e]/30",
+      "Intermediate": "bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30",
+      "Advanced": "bg-red-50 dark:bg-red-500/20 text-red-700 dark:text-red-400 border-red-200 dark:border-red-500/30"
     };
     return (
       <span className={`px-2.5 py-1 rounded-md border text-xs font-medium ${styles[level]}`}>
@@ -189,15 +175,15 @@ const CourseManagement = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
+    <div className="p-8">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Course Management</h1>
-            <p className="text-gray-600 mt-2">Manage fish deboning training courses and learning materials</p>
+            <h1 className="text-3xl font-semibold text-gray-900 dark:text-zinc-100">Course Management</h1>
+            <p className="text-gray-600 dark:text-zinc-400 mt-2">Manage fish deboning training courses and learning materials</p>
           </div>
-          <button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-green-800 transition-colors flex items-center gap-2 shadow-sm">
+          <button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-[#05611a] transition-colors flex items-center gap-2 shadow-sm">
             <Plus className="w-5 h-5" />
             Create New Course
           </button>
@@ -206,67 +192,67 @@ const CourseManagement = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-green-700 dark:text-[#04510e]" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">{courses.length}</p>
-              <p className="text-sm text-gray-600">Total Courses</p>
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">{courses.length}</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Total Courses</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className="w-10 h-10 bg-green-50 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600 dark:text-emerald-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {courses.filter(c => c.status === "published").length}
               </p>
-              <p className="text-sm text-gray-600">Published</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Published</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center">
-              <FileText className="w-5 h-5 text-gray-600" />
+            <div className="w-10 h-10 bg-gray-50 dark:bg-zinc-800 rounded-lg flex items-center justify-center">
+              <FileText className="w-5 h-5 text-gray-600 dark:text-zinc-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {courses.filter(c => c.status === "draft").length}
               </p>
-              <p className="text-sm text-gray-600">Drafts</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Drafts</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
-              <Users className="w-5 h-5 text-purple-600" />
+            <div className="w-10 h-10 bg-purple-50 dark:bg-purple-500/20 rounded-lg flex items-center justify-center">
+              <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">
                 {courses.reduce((acc, c) => acc + c.enrolled, 0)}
               </p>
-              <p className="text-sm text-gray-600">Total Enrolled</p>
+              <p className="text-sm text-gray-600 dark:text-zinc-400">Total Enrolled</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6 shadow-sm">
+      <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 p-4 mb-6 shadow-sm">
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setFilter("all")}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               filter === "all"
                 ? "bg-[#04510e] text-white shadow-sm"
-                : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
             }`}
           >
             All Courses
@@ -276,7 +262,7 @@ const CourseManagement = () => {
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               filter === "published"
                 ? "bg-[#04510e] text-white shadow-sm"
-                : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
             }`}
           >
             Published
@@ -286,7 +272,7 @@ const CourseManagement = () => {
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               filter === "draft"
                 ? "bg-[#04510e] text-white shadow-sm"
-                : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
             }`}
           >
             Drafts
@@ -295,123 +281,96 @@ const CourseManagement = () => {
       </div>
 
       {/* Courses Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCourses.map((course) => (
           <div
             key={course.id}
-            className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all"
+            className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-md dark:hover:border-zinc-700 transition-all cursor-pointer group"
           >
             {/* Course Header */}
-            <div className="p-6 border-b border-gray-100">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    {getStatusBadge(course.status)}
-                    {getLevelBadge(course.level)}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{course.name}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{course.description}</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Fish className="w-4 h-4 text-[#04510e]" />
-                    <span className="text-gray-700 font-medium">{course.fishSpecies}</span>
-                  </div>
+            <div className="p-6 border-b border-gray-100 dark:border-zinc-800">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-12 h-12 bg-green-50 dark:bg-[#04510e]/20 rounded-lg flex items-center justify-center group-hover:bg-green-100 dark:group-hover:bg-[#04510e]/30 transition-colors">
+                  <Fish className="w-6 h-6 text-green-700 dark:text-[#04510e]" />
                 </div>
+                {getLevelBadge(course.level)}
               </div>
-
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-gray-400" />
-                  <div>
-                    <p className="text-xs text-gray-500">Enrolled</p>
-                    <p className="text-sm font-semibold text-gray-900">{course.enrolled}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-gray-400" />
-                  <div>
-                    <p className="text-xs text-gray-500">Lessons</p>
-                    <p className="text-sm font-semibold text-gray-900">{course.lessons}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-gray-400" />
-                  <div>
-                    <p className="text-xs text-gray-500">Duration</p>
-                    <p className="text-sm font-semibold text-gray-900">{course.duration}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Course Topics */}
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="text-xs font-medium text-gray-500 mb-2">Key Topics:</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {course.topics.slice(0, 3).map((topic, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-gray-50 text-gray-700 text-xs rounded border border-gray-200">
-                      {topic}
-                    </span>
-                  ))}
-                  {course.topics.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-50 text-gray-500 text-xs rounded border border-gray-200">
-                      +{course.topics.length - 3} more
-                    </span>
-                  )}
-                </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-2">{course.name}</h3>
+              <p className="text-sm text-gray-600 dark:text-zinc-400 mb-3">{course.description}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-gray-500 dark:text-zinc-500 font-medium">Species:</span>
+                <span className="text-xs text-gray-700 dark:text-zinc-300">{course.fishSpecies}</span>
               </div>
             </div>
 
-            {/* Course Stats */}
-            {course.status === "published" && course.enrolled > 0 && (
-              <div className="p-6 border-b border-gray-100 bg-gray-50">
-                <div className="grid grid-cols-2 gap-4">
+            {/* Course Details */}
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                {getStatusBadge(course.status)}
+                <span className="text-xs text-gray-500 dark:text-zinc-500">Updated {course.lastUpdated}</span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 mb-4 pb-4 border-b border-gray-100 dark:border-zinc-800">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-600">Avg Progress</span>
-                      <span className="text-sm font-bold text-gray-900">{course.avgProgress}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-blue-600 h-2 rounded-full transition-all"
-                        style={{ width: `${course.avgProgress}%` }}
-                      ></div>
-                    </div>
+                    <p className="text-xs text-gray-500 dark:text-zinc-500">Students</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{course.enrolled}</p>
                   </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Target className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-600">Avg Score</span>
-                      <span className="text-sm font-bold text-gray-900">{course.avgScore}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-green-600 h-2 rounded-full transition-all"
-                        style={{ width: `${course.avgScore}%` }}
-                      ></div>
-                    </div>
+                    <p className="text-xs text-gray-500 dark:text-zinc-500">Lessons</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{course.lessons}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-gray-400 dark:text-zinc-500" />
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-zinc-500">Duration</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{course.duration}</p>
                   </div>
                 </div>
               </div>
-            )}
 
-            {/* Course Actions */}
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs text-gray-500">Updated {course.lastUpdated}</span>
-              </div>
-              <div className="flex gap-2">
-                <button className="flex-1 px-4 py-2 bg-[#04510e] text-white text-sm font-medium rounded-md hover:bg-green-800 transition-colors flex items-center justify-center gap-2">
+              {/* Performance Stats (Only for published courses with students) */}
+              {course.status === "published" && course.enrolled > 0 && (
+                <div className="space-y-3 mb-4">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-zinc-400">Avg Progress</span>
+                    <span className="font-medium text-gray-900 dark:text-zinc-100">{course.avgProgress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-100 dark:bg-zinc-800 rounded-full h-2">
+                    <div
+                      className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${course.avgProgress}%` }}
+                    ></div>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-zinc-400">Avg Score</span>
+                    <span className="font-medium text-gray-900 dark:text-zinc-100">{course.avgScore}%</span>
+                  </div>
+                  <div className="w-full bg-gray-100 dark:bg-zinc-800 rounded-full h-2 mb-4">
+                    <div
+                      className="bg-[#04510e] h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${course.avgScore}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="grid grid-cols-4 gap-2">
+                <button className="col-span-2 px-4 py-2.5 bg-[#04510e] text-white text-sm font-medium rounded-md hover:bg-[#05611a] transition-colors flex items-center justify-center gap-2">
                   <Edit className="w-4 h-4" />
                   Edit
                 </button>
-                <button className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                <button className="px-4 py-2.5 bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 text-sm font-medium rounded-md hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors flex items-center justify-center">
                   <Eye className="w-4 h-4" />
-                  View
                 </button>
-                <button className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                <button className="px-4 py-2.5 bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 text-sm font-medium rounded-md hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors flex items-center justify-center">
                   <BarChart3 className="w-4 h-4" />
-                  Analytics
-                </button>
-                <button className="px-4 py-2 bg-red-50 text-red-600 text-sm font-medium rounded-md hover:bg-red-100 transition-colors">
-                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -421,11 +380,11 @@ const CourseManagement = () => {
 
       {/* Empty State */}
       {filteredCourses.length === 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-12 text-center">
-          <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">No courses found</h3>
-          <p className="text-gray-600 mb-4">Get started by creating your first course</p>
-          <button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-green-800 transition-colors inline-flex items-center gap-2">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 shadow-sm p-12 text-center">
+          <BookOpen className="w-12 h-12 text-gray-400 dark:text-zinc-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-zinc-100 mb-2">No courses found</h3>
+          <p className="text-gray-600 dark:text-zinc-400 mb-4">Get started by creating your first course</p>
+          <button className="px-6 py-2.5 bg-[#04510e] text-white font-medium rounded-lg hover:bg-[#05611a] transition-colors inline-flex items-center gap-2">
             <Plus className="w-5 h-5" />
             Create Course
           </button>

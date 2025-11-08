@@ -1,137 +1,95 @@
 // file path: BoneUP-Web/src/pages/dashboards/InstructorDashboard.jsx
 
-import { useState, useContext } from "react";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Outlet, NavLink } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import { 
   LayoutDashboard, 
   BookOpen, 
-  Users, 
-  Settings, 
-  LogOut,
-  Menu,
-  X
+  Users,
+  Fish, 
+  ChevronLeft, 
+  ChevronRight
 } from "lucide-react";
+import DashboardNavbar from "../../components/DashboardNavbar";
 
 const InstructorDashboard = () => {
-  const { user, logout } = useContext(AppContext);
-  const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { user } = useContext(AppContext);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/signin");
-  };
-
-  const navItems = [
-    { path: "/instructor/dashboard", icon: LayoutDashboard, label: "Overview", end: true },
-    { path: "/instructor/dashboard/courses", icon: BookOpen, label: "Course Management" },
-    { path: "/instructor/dashboard/students", icon: Users, label: "Student Management" },
-    { path: "/instructor/dashboard/settings", icon: Settings, label: "Settings" }
+  const navigation = [
+    { name: "Overview", path: "/instructor/dashboard", icon: LayoutDashboard, end: true },
+    { name: "Course Management", path: "/instructor/dashboard/courses", icon: BookOpen },
+    { name: "Student Management", path: "/instructor/dashboard/students", icon: Users }
   ];
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 dark:bg-zinc-950">
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      }`}>
-        <div className="flex flex-col h-full">
-          {/* Logo */}
-          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
+      <aside
+        className={`${
+          sidebarOpen ? "w-64" : "w-20"
+        } bg-white dark:bg-zinc-900 border-r border-gray-200 dark:border-zinc-800 transition-all duration-300 flex flex-col`}
+      >
+        {/* Logo/Brand */}
+        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-zinc-800">
+          {sidebarOpen && (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">B</span>
+              <div className="w-8 h-8 bg-[#04510e] rounded-lg flex items-center justify-center">
+                <Fish className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">BoneUP</span>
+              <span className="font-bold text-xl text-gray-900 dark:text-zinc-100">BoneUP</span>
             </div>
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="lg:hidden text-gray-500 hover:text-gray-700"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* User Info */}
-          <div className="px-6 py-4 border-b border-gray-200">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                {(user?.full_name || user?.email || "I")[0].toUpperCase()}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-900 truncate">
-                  {user?.full_name || user?.email}
-                </p>
-                <p className="text-xs text-gray-500 capitalize">{user?.role}</p>
-              </div>
+          )}
+          {!sidebarOpen && (
+            <div className="w-8 h-8 bg-[#04510e] rounded-lg flex items-center justify-center mx-auto">
+              <Fish className="w-5 h-5 text-white" />
             </div>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.end}
-                  onClick={() => setSidebarOpen(false)}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
-                        ? "bg-blue-50 text-blue-700"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`
-                  }
-                >
-                  <Icon className="w-5 h-5" />
-                  <span>{item.label}</span>
-                </NavLink>
-              );
-            })}
-          </nav>
-
-          {/* Logout Button */}
-          <div className="p-3 border-t border-gray-200">
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-3 w-full px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-            >
-              <LogOut className="w-5 h-5" />
-              <span>Logout</span>
-            </button>
-          </div>
+          )}
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+          >
+            {sidebarOpen ? (
+              <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
+            ) : (
+              <ChevronRight className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
+            )}
+          </button>
         </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+          {navigation.map((item) => {
+            const Icon = item.icon;
+            return (
+              <NavLink
+                key={item.name}
+                to={item.path}
+                end={item.end}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                    isActive
+                      ? "bg-green-50 dark:bg-[#04510e] text-[#04510e] dark:text-white font-medium"
+                      : "text-gray-700 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                  } ${!sidebarOpen && "justify-center"}`
+                }
+              >
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                {sidebarOpen && <span className="text-sm">{item.name}</span>}
+              </NavLink>
+            );
+          })}
+        </nav>
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Mobile Header */}
-        <header className="lg:hidden h-16 bg-white border-b border-gray-200 flex items-center px-4">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-          <span className="ml-4 text-lg font-semibold text-gray-900">BoneUP</span>
-        </header>
-
-        {/* Page Content */}
-        <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-zinc-950 flex flex-col">
+        <DashboardNavbar />
+        <div className="flex-1">
           <Outlet />
-        </main>
-      </div>
-
-      {/* Mobile Sidebar Overlay */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        ></div>
-      )}
+        </div>
+      </main>
     </div>
   );
 };

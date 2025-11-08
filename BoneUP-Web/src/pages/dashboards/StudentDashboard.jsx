@@ -28,21 +28,21 @@ const StudentDashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 dark:bg-zinc-950">
       {/* Sidebar */}
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-white border-r border-gray-200 transition-all duration-300 flex flex-col`}
+        } bg-white dark:bg-zinc-900 border-r border-gray-200 dark:border-zinc-800 transition-all duration-300 flex flex-col`}
       >
         {/* Logo/Brand */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-zinc-800">
           {sidebarOpen && (
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-[#04510e] rounded-lg flex items-center justify-center">
                 <Fish className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-xl text-gray-900">BoneUP</span>
+              <span className="font-bold text-xl text-gray-900 dark:text-zinc-100">BoneUP</span>
             </div>
           )}
           {!sidebarOpen && (
@@ -52,12 +52,12 @@ const StudentDashboard = () => {
           )}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
           >
             {sidebarOpen ? (
-              <ChevronLeft className="w-4 h-4 text-gray-600" />
+              <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
             ) : (
-              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <ChevronRight className="w-4 h-4 text-gray-600 dark:text-zinc-400" />
             )}
           </button>
         </div>
@@ -74,8 +74,8 @@ const StudentDashboard = () => {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
                     isActive
-                      ? "bg-green-50 text-[#04510e] font-medium"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "bg-green-50 dark:bg-[#04510e] text-[#04510e] dark:text-white font-medium"
+                      : "text-gray-700 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                   } ${!sidebarOpen && "justify-center"}`
                 }
               >
@@ -88,7 +88,7 @@ const StudentDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto bg-gray-50 flex flex-col">
+      <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-zinc-950 flex flex-col">
         <DashboardNavbar />
         <div className="flex-1">
           <Outlet />
