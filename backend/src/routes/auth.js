@@ -4,6 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const pool = require('../db');
+const authMiddleware = require('../middleware/auth');
 const router = express.Router();
 
 // Register (students and instructors only, no admin registration)
@@ -85,20 +86,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Get current user profile
-router.get('/me', async (req, res) => {
-  const token = req.headers['authorization']?.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-
+// Get current user profile (NOW USING authMiddleware)
+router.get('/me', authMiddleware, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
     const [userRows] = await pool.query(
       'SELECT u.id, u.email, u.role, u.full_name, u.created_at, up.experience_level, up.goals, up.bio, up.avatar_url FROM users u LEFT JOIN user_profiles up ON u.id = up.user_id WHERE u.id = ?',
-      [decoded.id]
+      [req.user.id]
     );
 
     if (userRows.length === 0) {
@@ -107,27 +100,32 @@ router.get('/me', async (req, res) => {
 
     const user = userRows[0];
 
-    // If student, get assigned instructor
+    // If student, get enrolled courses count
     if (user.role === 'student') {
-      const [instructorRows] = await pool.query(
-        'SELECT u.id, u.full_name, u.email FROM instructor_students ins JOIN users u ON ins.instructor_id = u.id WHERE ins.student_id = ?',
+      const [courseCount] = await pool.query(
+        'SELECT COUNT(*) as count FROM course_enrollments WHERE student_id = ? AND status = "accepted"',
         [user.id]
       );
-      user.instructor = instructorRows.length > 0 ? instructorRows[0] : null;
+      user.enrolled_courses = courseCount[0].count;
     }
 
-    // If instructor, get student count
+    // If instructor, get course and student count
     if (user.role === 'instructor') {
-      const [countRows] = await pool.query(
-        'SELECT COUNT(*) as student_count FROM instructor_students WHERE instructor_id = ?',
+      const [courseCount] = await pool.query(
+        'SELECT COUNT(*) as count FROM courses WHERE instructor_id = ?',
         [user.id]
       );
-      user.student_count = countRows[0].student_count;
+      const [studentCount] = await pool.query(
+        'SELECT COUNT(*) as count FROM course_enrollments ce JOIN courses c ON ce.course_id = c.id WHERE c.instructor_id = ? AND ce.status = "accepted"',
+        [user.id]
+      );
+      user.course_count = courseCount[0].count;
+      user.student_count = studentCount[0].count;
     }
 
     res.json({ user });
   } catch (e) {
-    res.status(403).json({ error: 'Invalid token', details: e.message });
+    res.status(500).json({ error: 'Failed to fetch user', details: e.message });
   }
 });
 

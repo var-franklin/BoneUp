@@ -11,6 +11,7 @@ const attemptsRoutes = require('./routes/attempts');
 const usersRoutes = require('./routes/users');
 const instructorRoutes = require('./routes/instructor');
 const studentRoutes = require('./routes/student');
+const coursesRoutes = require('./routes/courses');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/attempts', attemptsRoutes);
 app.use('/api/users', usersRoutes);           // Admin only
 app.use('/api/instructor', instructorRoutes);  // Instructor only
 app.use('/api/student', studentRoutes);        // Student only
+app.use('/api/courses', coursesRoutes);
 
 const port = process.env.PORT || 4000;
 
